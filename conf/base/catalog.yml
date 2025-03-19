@@ -1,6 +1,6 @@
 csv_weather_aus:
   filepath: data/01_raw/weatherAUS.csv
   type: pandas.CSVDataset
-  load_args: 
+  load_args:
     delimiter: ","
     encoding: "utf-8"
