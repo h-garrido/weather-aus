@@ -2,14 +2,12 @@
 
 from kedro.framework.project import find_pipelines
 from kedro.pipeline import Pipeline
+from weather_aus.pipelines.exploracion_inicial import pipeline as exploracion_inicial_pipeline
 
 
 def register_pipelines() -> dict[str, Pipeline]:
-    """Register the project's pipelines.
-
-    Returns:
-        A mapping from pipeline names to ``Pipeline`` objects.
-    """
-    pipelines = find_pipelines()
-    pipelines["__default__"] = sum(pipelines.values())
+    pipelines = {
+        "exploracion_inicial": exploracion_inicial_pipeline.create_pipeline(),
+    }
+    pipelines["__default__"] = pipelines["exploracion_inicial"]
     return pipelines
