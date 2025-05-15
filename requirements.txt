@@ -1,0 +1,19 @@
+kedro>=0.18.0
+pandas>=1.3.0
+numpy>=1.20.0
+matplotlib>=3.4.0
+scikit-learn>=1.0.0
+psycopg2-binary>=2.9.0
+ipython>=7.0.0
+jupyter>=1.0.0
+kedro-viz>=5.0.0
+sqlalchemy>=1.4.0
+kedro-datasets[pandas.SQLTableDataSet]
+
+##en caso de haber error instalar nuevamente los dataset docker exec -it kedro_app bash -c "pip install 'kedro-datasets[pandas,sql]' --upgrade" al momendo de levantar docker 
+## con el comando docker-compose up -d
+
+
+## revisar datos docker exec -it kedro_app bash -c "ls -la /app/data/08_reporting/"
+##docker exec -it kedro_app bash -c "cat /app/data/08_reporting/linear_regression_metrics_summary.json"/
+#docker exec -it kedro_app bash -c "pip install scikit-learn matplotlib seaborn joblib"

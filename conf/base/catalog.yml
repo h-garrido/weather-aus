@@ -1,0 +1,268 @@
+# Dataset de entrada (CSV)
+raw_data:
+  type: kedro_datasets.pandas.csv_dataset.CSVDataset
+  filepath: data/01_raw/weatherAUS.csv
+  load_args:
+    on_bad_lines: 'skip'
+    encoding: 'utf-8'
+    sep: ','
+    na_values: ['NA', 'NaN', '', 'null']
+
+# Dataset de entrada desde PostgreSQL - conexión a la tabla directamente
+raw_data_postgres:
+  type: kedro_datasets.pandas.sql_dataset.SQLTableDataset
+  table_name: clean_data
+  credentials:
+    con: postgresql://kedro:kedro@postgres:5432/kedro_db
+
+
+# Dataset de salida (datos transformados en PostgreSQL)
+transformed_data:
+  type: kedro_datasets.pandas.sql_dataset.SQLTableDataset
+  table_name: transformed_data
+  credentials:
+    con: postgresql://kedro:kedro@postgres:5432/kedro_db
+  save_args:
+    if_exists: 'replace'
+
+# Dataset final para modelado de regresión
+modeling_data_regression:
+  type: kedro_datasets.pandas.sql_dataset.SQLTableDataset
+  table_name: modeling_data_regression
+  credentials:
+    con: postgresql://kedro:kedro@postgres:5432/kedro_db
+  save_args:
+    if_exists: 'replace'
+
+# Datasets intermedios para almacenar los conjuntos de entrenamiento y prueba
+X_train_gaussian_nb:
+  type: kedro_datasets.pickle.pickle_dataset.PickleDataset
+  filepath: data/05_model_input/X_train_gaussian_nb.pickle
+
+X_test_gaussian_nb:
+  type: kedro_datasets.pickle.pickle_dataset.PickleDataset
+  filepath: data/05_model_input/X_test_gaussian_nb.pickle
+
+y_train_gaussian_nb:
+  type: kedro_datasets.pickle.pickle_dataset.PickleDataset
+  filepath: data/05_model_input/y_train_gaussian_nb.pickle
+
+y_test_gaussian_nb:
+  type: kedro_datasets.pickle.pickle_dataset.PickleDataset
+  filepath: data/05_model_input/y_test_gaussian_nb.pickle
+
+# Dataset para guardar el modelo entrenado
+gaussian_nb_regressor_model:
+  type: kedro_datasets.pickle.pickle_dataset.PickleDataset
+  filepath: data/06_models/gaussian_nb_regressor_model.pickle
+  versioned: true
+
+# Dataset para guardar las métricas del modelo
+gaussian_nb_regressor_metrics:
+  type: kedro_datasets.json.json_dataset.JSONDataset
+  filepath: data/08_reporting/gaussian_nb_regressor_metrics.json
+
+# Dataset para guardar las predicciones del modelo
+gaussian_nb_regressor_predictions:
+  type: kedro_datasets.pandas.sql_dataset.SQLTableDataset
+  table_name: gaussian_nb_regressor_predictions
+  credentials:
+    con: postgresql://kedro:kedro@postgres:5432/kedro_db
+  save_args:
+    if_exists: 'replace'
+
+#------------------------------------------------------------------------------------------------------
+# Datasets intermedios para almacenar los conjuntos de entrenamiento y prueba
+X_train_gradient_boosting:
+  type: kedro_datasets.pickle.pickle_dataset.PickleDataset
+  filepath: data/05_model_input/X_train_gradient_boosting.pickle
+
+X_test_gradient_boosting:
+  type: kedro_datasets.pickle.pickle_dataset.PickleDataset
+  filepath: data/05_model_input/X_test_gradient_boosting.pickle
+
+y_train_gradient_boosting:
+  type: kedro_datasets.pickle.pickle_dataset.PickleDataset
+  filepath: data/05_model_input/y_train_gradient_boosting.pickle
+
+y_test_gradient_boosting:
+  type: kedro_datasets.pickle.pickle_dataset.PickleDataset
+  filepath: data/05_model_input/y_test_gradient_boosting.pickle
+
+# Dataset para guardar el modelo entrenado
+gradient_boosting_regressor_model:
+  type: kedro_datasets.pickle.pickle_dataset.PickleDataset
+  filepath: data/06_models/gradient_boosting_regressor_model.pickle
+  versioned: true
+
+# Dataset para guardar las métricas del modelo
+gradient_boosting_regressor_metrics:
+  type: kedro_datasets.json.json_dataset.JSONDataset
+  filepath: data/08_reporting/gradient_boosting_regressor_metrics.json
+
+# Dataset para guardar las predicciones del modelo
+gradient_boosting_regressor_predictions:
+  type: kedro_datasets.pandas.sql_dataset.SQLTableDataset
+  table_name: gradient_boosting_regressor_predictions
+  credentials:
+    con: postgresql://kedro:kedro@postgres:5432/kedro_db
+  save_args:
+    if_exists: 'replace'
+
+#------------------------------------------------------------------------------------------------------------
+# Datasets intermedios para almacenar los conjuntos de entrenamiento y prueba
+X_train_ridge:
+  type: kedro_datasets.pickle.pickle_dataset.PickleDataset
+  filepath: data/05_model_input/X_train_ridge.pickle
+
+X_test_ridge:
+  type: kedro_datasets.pickle.pickle_dataset.PickleDataset
+  filepath: data/05_model_input/X_test_ridge.pickle
+
+y_train_ridge:
+  type: kedro_datasets.pickle.pickle_dataset.PickleDataset
+  filepath: data/05_model_input/y_train_ridge.pickle
+
+y_test_ridge:
+  type: kedro_datasets.pickle.pickle_dataset.PickleDataset
+  filepath: data/05_model_input/y_test_ridge.pickle
+
+# Dataset para guardar el modelo entrenado
+ridge_regressor_model:
+  type: kedro_datasets.pickle.pickle_dataset.PickleDataset
+  filepath: data/06_models/ridge_regressor_model.pickle
+  versioned: true
+
+# Dataset para guardar las métricas del modelo
+ridge_regressor_metrics:
+  type: kedro_datasets.json.json_dataset.JSONDataset
+  filepath: data/08_reporting/ridge_regressor_metrics.json
+
+# Dataset para guardar las predicciones del modelo
+ridge_regressor_predictions:
+  type: kedro_datasets.pandas.sql_dataset.SQLTableDataset
+  table_name: ridge_regressor_predictions
+  credentials:
+    con: postgresql://kedro:kedro@postgres:5432/kedro_db
+  save_args:
+    if_exists: 'replace'
+
+#-----------------------------------------------------------------------------------
+# Datasets intermedios para almacenar los conjuntos de entrenamiento y prueba
+X_train_lasso:
+  type: kedro_datasets.pickle.pickle_dataset.PickleDataset
+  filepath: data/05_model_input/X_train_lasso.pickle
+
+X_test_lasso:
+  type: kedro_datasets.pickle.pickle_dataset.PickleDataset
+  filepath: data/05_model_input/X_test_lasso.pickle
+
+y_train_lasso:
+  type: kedro_datasets.pickle.pickle_dataset.PickleDataset
+  filepath: data/05_model_input/y_train_lasso.pickle
+
+y_test_lasso:
+  type: kedro_datasets.pickle.pickle_dataset.PickleDataset
+  filepath: data/05_model_input/y_test_lasso.pickle
+
+# Dataset para guardar el modelo entrenado
+lasso_regressor_model:
+  type: kedro_datasets.pickle.pickle_dataset.PickleDataset
+  filepath: data/06_models/lasso_regressor_model.pickle
+  versioned: true
+
+# Dataset para guardar las métricas del modelo
+lasso_regressor_metrics:
+  type: kedro_datasets.json.json_dataset.JSONDataset
+  filepath: data/08_reporting/lasso_regressor_metrics.json
+
+# Dataset para guardar las predicciones del modelo
+lasso_regressor_predictions:
+  type: kedro_datasets.pandas.sql_dataset.SQLTableDataset
+  table_name: lasso_regressor_predictions
+  credentials:
+    con: postgresql://kedro:kedro@postgres:5432/kedro_db
+  save_args:
+    if_exists: 'replace'
+
+#------------------------------------------------------------------------------------
+# Original input data (para guardar referencia)
+X_train_svr:
+  type: kedro_datasets.pickle.pickle_dataset.PickleDataset
+  filepath: data/05_model_input/X_train_svr.pickle
+
+X_test_svr:
+  type: kedro_datasets.pickle.pickle_dataset.PickleDataset
+  filepath: data/05_model_input/X_test_svr.pickle
+
+# Datasets intermedios para almacenar los conjuntos de entrenamiento y prueba escalados
+X_train_svr_scaled:
+  type: kedro_datasets.pickle.pickle_dataset.PickleDataset
+  filepath: data/05_model_input/X_train_svr_scaled.pickle
+
+X_test_svr_scaled:
+  type: kedro_datasets.pickle.pickle_dataset.PickleDataset
+  filepath: data/05_model_input/X_test_svr_scaled.pickle
+
+y_train_svr:
+  type: kedro_datasets.pickle.pickle_dataset.PickleDataset
+  filepath: data/05_model_input/y_train_svr.pickle
+
+y_test_svr:
+  type: kedro_datasets.pickle.pickle_dataset.PickleDataset
+  filepath: data/05_model_input/y_test_svr.pickle
+
+# El escalador para futuras predicciones
+svr_scaler:
+  type: kedro_datasets.pickle.pickle_dataset.PickleDataset
+  filepath: data/06_models/svr_scaler.pickle
+  versioned: true
+
+# Dataset para guardar el modelo entrenado
+svr_model:
+  type: kedro_datasets.pickle.pickle_dataset.PickleDataset
+  filepath: data/06_models/svr_model.pickle
+  versioned: true
+
+# Dataset para guardar las métricas del modelo
+svr_metrics:
+  type: kedro_datasets.json.json_dataset.JSONDataset
+  filepath: data/08_reporting/svr_metrics.json
+
+# Dataset para guardar artefactos adicionales
+svr_artifacts:
+  type: kedro_datasets.json.json_dataset.JSONDataset
+  filepath: data/08_reporting/svr_artifacts.json
+
+# Dataset para guardar las predicciones del modelo
+svr_predictions:
+  type: kedro_datasets.pandas.sql_dataset.SQLTableDataset
+  table_name: svr_predictions
+  credentials:
+    con: postgresql://kedro:kedro@postgres:5432/kedro_db
+  save_args:
+    if_exists: 'replace'
+
+#---------------------------------------------------------------------------------------------------------------------------
+# Datasets para la evaluación comparativa de modelos de regresión
+
+regression_models_metrics:
+  type: kedro_datasets.pandas.csv_dataset.CSVDataset
+  filepath: data/08_reporting/regression_models_metrics.csv
+  save_args:
+    index: False
+
+# Dataset para almacenar las rutas de las visualizaciones generadas
+regression_visualization_paths:
+  type: kedro_datasets.json.json_dataset.JSONDataset
+  filepath: data/08_reporting/regression_visualization_paths.json
+
+# Dataset para almacenar el reporte de ranking de modelos
+regression_models_ranking:
+  type: kedro_datasets.json.json_dataset.JSONDataset
+  filepath: data/08_reporting/regression_models_ranking.json
+
+# Dataset para almacenar el resumen de evaluación completo
+regression_evaluation_summary:
+  type: kedro_datasets.json.json_dataset.JSONDataset
+  filepath: data/08_reporting/regression_evaluation_summary.json

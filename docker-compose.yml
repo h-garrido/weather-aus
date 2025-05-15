@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres:14
+    container_name: kedro_postgres
+    environment:
+      POSTGRES_USER: kedro
+      POSTGRES_PASSWORD: kedro
+      POSTGRES_DB: kedro_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - kedro-network
+
+  kedro:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: kedro_app
+    depends_on:
+      - postgres
+    volumes:
+      - ./:/app
+    networks:
+      - kedro-network
+    command: tail -f /dev/null
+
+networks:
+  kedro-network:
+    driver: bridge
+
+volumes:
+  postgres_data:

@@ -1,0 +1,131 @@
+# Parámetros para el modelo de regresión lineal
+linear_regression:
+  split:
+    target_column: risk_mm
+    test_size: 0.2
+    random_state: 42
+  train:
+    fit_intercept: true
+  evaluate:
+    cv_folds: 5
+
+# Parámetros para el modelo Random Forest Regressor
+random_forest:
+  split:
+    target_column: risk_mm
+    test_size: 0.2
+    random_state: 42
+  train:
+    n_estimators: 100
+    max_depth: null  # null para sin límite de profundidad
+    min_samples_split: 2
+    min_samples_leaf: 1
+    random_state: 42
+  evaluate:
+    cv_folds: 5
+
+# Parámetros para el modelo KNN Regressor
+knn_regressor:
+  split:
+    target_column: risk_mm
+    test_size: 0.2
+    random_state: 42
+  train:
+    n_neighbors: 5
+    weights: distance  # 'uniform' o 'distance'
+    algorithm: auto  # 'auto', 'ball_tree', 'kd_tree', o 'brute'
+    leaf_size: 30
+    random_state: 42
+  evaluate:
+    cv_folds: 5
+
+# Parámetros para el modelo Gaussian Naive Bayes Regressor
+gaussian_nb_regressor:
+  split:
+    target_column: risk_mm
+    test_size: 0.2
+    random_state: 42
+  train:
+    n_bins: 15  # Número de bins para discretizar la variable objetivo
+  evaluate:
+    cv_folds: 5
+
+# Parámetros para el modelo Gradient Boosting Regressor
+gradient_boosting_regressor:
+  split:
+    target_column: risk_mm
+    test_size: 0.2
+    random_state: 42
+  train:
+    n_estimators: 100
+    learning_rate: 0.1
+    max_depth: 3
+    min_samples_split: 2
+    min_samples_leaf: 1
+    subsample: 1.0
+  evaluate:
+    cv_folds: 5
+
+# Parámetros para el modelo Ridge Regression
+ridge_regressor:
+  split:
+    target_column: risk_mm
+    test_size: 0.2
+    random_state: 42
+  train:
+    alpha: 1.0
+    fit_intercept: true
+    max_iter: 1000
+    tol: 0.001
+    solver: 'auto'
+  evaluate:
+    cv_folds: 5
+
+
+# Parámetros para el modelo Lasso Regression
+lasso_regressor:
+  split:
+    target_column: risk_mm
+    test_size: 0.2
+    random_state: 42
+  train:
+    alpha: 0.1
+    fit_intercept: true
+    max_iter: 5000
+    tol: 0.0001
+    selection: 'cyclic'  # 'cyclic' o 'random'
+  evaluate:
+    cv_folds: 5
+
+# Parámetros para el modelo Support Vector Regression
+svr_regressor:
+  split:
+    target_column: risk_mm
+    test_size: 0.2
+    random_state: 42
+  train:
+    kernel: 'rbf'       # 'linear', 'poly', 'rbf', 'sigmoid'
+    C: 1.0              # Parámetro de regularización
+    epsilon: 0.1        # Ancho del tubo epsilon
+    gamma: 'scale'      # 'scale', 'auto' o un valor flotante
+    tol: 0.001          # Tolerancia para criterio de parada
+    cache_size: 500     # Tamaño de la cache en MB
+    max_iter: -1        # -1 para sin límite
+  evaluate:
+    cv_folds: 5
+
+# Parámetros para la evaluación de modelos de regresión
+
+# Rutas a los archivos de métricas de cada modelo
+model_metrics_paths:
+  linear_regression: /app/data/08_reporting/linear_regression_metrics.json
+  random_forest: /app/data/08_reporting/random_forest_metrics.json
+  knn_regressor: /app/data/08_reporting/knn_regressor_metrics.json
+  gaussian_nb_regressor: /app/data/08_reporting/gaussian_nb_regressor_metrics.json
+  gradient_boosting_regressor: /app/data/08_reporting/gradient_boosting_regressor_metrics.json
+  ridge_regressor: /app/data/08_reporting/ridge_regressor_metrics.json
+  lasso_regressor: /app/data/08_reporting/lasso_regressor_metrics.json
+  svr: /app/data/08_reporting/svr_metrics.json
+
+# Directorio para guardar las visualizaciones generadas
+visualization_output_dir: /app/data/08_reporting/visualizations
