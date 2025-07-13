@@ -227,3 +227,58 @@ kedro info
 # Ver estructura del proyecto
 kedro catalog list
 ```
+
+--------------------------------------------------------
+# al poner hash en algunos archivos se requeiren ciertos comandos nuevos 
+
+
+```bash
+#comandos de carga
+
+# Solo modelos de clasificación
+python scripts/upload_models.py --repo yorha9s/weather-aus-models --group=classification
+
+# Solo modelos de regresión  
+python scripts/upload_models.py --repo yorha9s/weather-aus-models --group=regression
+
+# Todos los archivos pesados
+python scripts/upload_models.py --repo yorha9s/weather-aus-models
+
+# Ver qué se subiría sin subir realmente
+python scripts/upload_models.py --repo yorha9s/weather-aus-models --dry-run
+
+
+#descarga comandos
+# Todos los archivos necesarios
+python scripts/download_models.py --repo yorha9s/weather-aus-models
+
+# Descargar aunque los archivos ya existan
+python scripts/download_models.py --repo yorha9s/weather-aus-models --force
+
+# Por grupo con force
+python scripts/download_models.py --repo yorha9s/weather-aus-models --group=classification --force
+
+
+
+#probar descargar
+
+# 1. Hacer backup de un archivo
+move data\06_models\knn_model.pkl data\06_models\knn_model.pkl.backup
+
+# 2. Descargar de nuevo
+python scripts/download_models.py --repo yorha9s/weather-aus-models --group=classification --force
+
+# 3. Verificar que se descargó
+dir data\06_models\knn_model.pkl
+
+
+#probar kedro con modelos descargados
+
+# 1. Descargar todos los modelos
+python scripts/download_models.py --repo yorha9s/weather-aus-models
+
+# 2. Probar kedro
+kedro run --pipeline=regression_models
+# o 
+kedro run
+```
