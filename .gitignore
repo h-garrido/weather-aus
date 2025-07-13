@@ -160,3 +160,48 @@ venv.bak/
 
 # mlflow local runs
 mlruns/*
+
+# =============================================
+# MODEL REGISTRY - Archivos pesados gestionados externamente
+# =============================================
+
+# Archivos de modelo pesados (gestionados por model registry)
+data/06_models/classification_models_dict.pkl
+data/06_models/knn_model.pkl
+data/06_models/random_forest_classification_model.pkl
+data/06_models/random_forest_model.joblib
+data/02_intermediate/versioned_data.pkl/2025-06-23T02.52.13.774Z/versioned_data.pkl
+data/02_intermediate/versioned_data.pkl/2025-06-23T03.07.34.642Z/versioned_data.pkl
+data/02_intermediate/versioned_data.pkl/2025-06-23T03.12.17.564Z/versioned_data.pkl
+data/02_intermediate/versioned_data.pkl/2025-06-23T03.13.37.295Z/versioned_data.pkl
+data/02_intermediate/versioned_data.pkl/2025-06-23T03.35.25.947Z/versioned_data.pkl
+data/02_intermediate/versioned_data.pkl/2025-06-23T03.41.56.180Z/versioned_data.pkl
+data/02_intermediate/versioned_data.pkl/2025-06-23T03.43.15.263Z/versioned_data.pkl
+data/02_intermediate/versioned_data.pkl/2025-06-23T03.43.39.783Z/versioned_data.pkl
+data/02_intermediate/versioned_data.pkl/2025-06-23T03.56.48.196Z/versioned_data.pkl
+data/02_intermediate/versioned_data.pkl/2025-06-23T05.30.40.945Z/versioned_data.pkl
+data/02_intermediate/versioned_data.pkl/2025-06-23T05.32.29.365Z/versioned_data.pkl
+data/02_intermediate/versioned_data.pkl/2025-06-23T05.42.13.661Z/versioned_data.pkl
+data/02_intermediate/versioned_data.pkl/2025-06-23T05.42.33.776Z/versioned_data.pkl
+data/02_intermediate/versioned_data.pkl/2025-06-23T05.44.35.252Z/versioned_data.pkl
+data/02_intermediate/versioned_data.pkl/2025-06-23T05.55.53.391Z/versioned_data.pkl
+data/02_intermediate/versioned_data.pkl/2025-06-25T04.48.21.847Z/versioned_data.pkl
+data/02_intermediate/versioned_data.pkl/2025-06-25T06.36.59.367Z/versioned_data.pkl
+data/02_intermediate/versioned_data.pkl/2025-06-25T09.14.09.147Z/versioned_data.pkl
+data/09_model_registry/model_versions/knn_classification_v1.0.0_3cba51f5-b0b4-4b6c-b81a-0725861678de.pkl
+data/09_model_registry/model_versions/knn_classification_v1.0.0_3d62fe1a-06f8-4e42-bd5c-e735c8e42550.pkl
+data/09_model_registry/model_versions/knn_classification_v1.0.0_6ef2f8c9-d9b2-4ccc-be80-7cec5770c52a.pkl
+data/09_model_registry/model_versions/knn_classification_v1.0.0_80827928-07f8-480b-af54-fcc33693448d.pkl
+data/09_model_registry/model_versions/random_forest_classification_v1.0.0_2c191e58-9bfc-49a0-87e8-7d4dc527cd0e.pkl
+data/09_model_registry/model_versions/random_forest_classification_v1.0.0_7b702e8c-5b52-4f78-a5be-6a7ee468f652.pkl
+data/09_model_registry/model_versions/random_forest_classification_v1.0.0_ae0dd33e-4d73-4a5d-8be6-2cbc35808368.pkl
+data/09_model_registry/model_versions/random_forest_classification_v1.0.0_c0497eb1-7bc9-4183-855c-c7322f7c539e.pkl
+
+# Versiones antiguas de datos
+data/02_intermediate/versioned_data.pkl/*/
+data/06_models/*/2025-05-*
+data/06_models/*/2025-06-2[0-2]*
+
+# Cache local del model registry
+data/.model_cache/
+model_registry_config.json

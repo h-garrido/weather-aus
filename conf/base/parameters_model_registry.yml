@@ -1,0 +1,214 @@
+# =======================================================
+# MODEL REGISTRY PARAMETERS
+# Weather Australia MLOps Project
+# =======================================================
+
+# Core model registry settings
+model_registry:
+  enabled: true
+  auto_register: true
+  base_path: "data/09_model_registry"
+  
+  # Versioning strategy
+  versioning:
+    strategy: "semantic"  # semantic, timestamp, hash
+    auto_increment: "patch"  # major, minor, patch
+    format: "{major}.{minor}.{patch}"
+    
+  # Model naming conventions
+  naming:
+    include_algorithm: true
+    include_timestamp: false
+    include_performance: false
+    separator: "_"
+    max_name_length: 100
+
+# =======================================================
+# DATABASE CONFIGURATION
+# =======================================================
+
+database:
+  host: "postgres"
+  port: 5432
+  database: "kedro_db"
+  user: "kedro"
+  password: "kedro"
+
+# =======================================================
+# AUTOMATIC REGISTRATION SETTINGS
+# =======================================================
+
+auto_registration:
+  enabled: true
+  
+  # Models to auto-register
+  models_to_register:
+    regression:
+      - "linear_regression_model"
+      - "random_forest_regressor_model"
+      - "ridge_regressor_model"
+      - "lasso_regressor_model"
+      - "svr_model"
+      - "knn_regressor_model"
+      - "gaussian_nb_regressor_model"
+      - "gradient_boosting_regressor_model"
+      
+    classification:
+      - "logistic_regression_model"
+      - "random_forest_classification_model"
+      - "decision_tree_model"
+      - "svm_classification_model"
+      - "bayes_classification_model"
+      - "knn_model"
+      - "gradient_boosting_classification_model"
+
+# =======================================================
+# METRICS CONFIGURATION
+# =======================================================
+
+metrics:
+  # Regression metrics to track and validate
+  regression:
+    primary_metric: "r2_score"
+    track_metrics:
+      - "r2_score"
+      - "mean_squared_error"
+      - "mean_absolute_error"
+      - "root_mean_squared_error"
+      
+    # Validation rules
+    validation_rules:
+      r2_score:
+        min_value: -10.0
+        max_value: 1.0
+        warning_threshold: 0.5
+      mean_squared_error:
+        min_value: 0.0
+        warning_threshold: 1000.0
+      mean_absolute_error:
+        min_value: 0.0
+        warning_threshold: 100.0
+        
+  # Classification metrics to track and validate
+  classification:
+    primary_metric: "accuracy"
+    track_metrics:
+      - "accuracy"
+      - "precision"
+      - "recall"
+      - "f1_score"
+      - "roc_auc"
+      
+    # Validation rules
+    validation_rules:
+      accuracy:
+        min_value: 0.0
+        max_value: 1.0
+        warning_threshold: 0.6
+      precision:
+        min_value: 0.0
+        max_value: 1.0
+        warning_threshold: 0.6
+      recall:
+        min_value: 0.0
+        max_value: 1.0
+        warning_threshold: 0.6
+      f1_score:
+        min_value: 0.0
+        max_value: 1.0
+        warning_threshold: 0.6
+      roc_auc:
+        min_value: 0.0
+        max_value: 1.0
+        warning_threshold: 0.7
+
+# =======================================================
+# MODEL COMPARISON SETTINGS
+# =======================================================
+
+model_comparison:
+  enabled: true
+  auto_compare_on_register: true
+  
+  # Leaderboard settings
+  leaderboard:
+    max_models: 20
+    update_frequency: "on_registration"
+    include_archived: false
+    
+  # Winner selection criteria
+  winner_selection:
+    primary_metric_weight: 0.7
+    secondary_metrics_weight: 0.2
+    model_complexity_weight: 0.1
+    tie_breaker: "latest_model"
+
+# =======================================================
+# LINEAGE TRACKING SETTINGS
+# =======================================================
+
+lineage_tracking:
+  enabled: true
+  
+  # What to track
+  track:
+    input_datasets: true
+    pipeline_metadata: true
+    git_information: true
+    environment_information: true
+    
+  # Git integration
+  git_integration:
+    enabled: true
+    auto_commit_hash: true
+    include_branch_name: true
+
+# =======================================================
+# ARCHIVAL SETTINGS
+# =======================================================
+
+archival:
+  enabled: false  # Set to true when ready for production
+  
+  # Automatic archival rules
+  auto_archive:
+    enabled: false
+    max_versions_per_model: 10
+    archive_after_days: 90
+
+# =======================================================
+# REPORTING SETTINGS
+# =======================================================
+
+reporting:
+  enabled: true
+  
+  # Report generation
+  auto_reports:
+    enabled: true
+    frequency: "on_comparison"
+    
+  # Report types
+  report_types:
+    summary_report:
+      enabled: true
+      include_metrics: true
+      include_leaderboard: true
+      
+    performance_report:
+      enabled: true
+      include_charts: true
+      
+    comparison_report:
+      enabled: true
+      include_visualizations: true
+
+# =======================================================
+# DEFAULT TAGS
+# =======================================================
+
+default_tags:
+  project: "weather_australia"
+  environment: "development"
+  framework: "kedro"
+  team: "mlops"

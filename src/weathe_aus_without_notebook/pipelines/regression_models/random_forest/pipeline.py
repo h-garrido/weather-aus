@@ -12,7 +12,7 @@ def create_pipeline(**kwargs) -> Pipeline:
                 func=train_random_forest,
                 inputs=["modeling_data_regression", "params:random_forest"],
                 outputs=None,
-                name="train_random_forest_node",
+                name="regression_random_forest",
             ),
         ]
     )

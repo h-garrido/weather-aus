@@ -129,3 +129,237 @@ model_metrics_paths:
 
 # Directorio para guardar las visualizaciones generadas
 visualization_output_dir: /app/data/08_reporting/visualizations
+
+# Parámetros para feature selection classification
+rfe_params:
+  n_estimators: 50
+  n_features_to_select: 10
+
+feature_selection_params:
+  n_final_features: 15
+  method_weights:
+    correlation: 1
+    mutual_info: 2
+    chi_square: 1
+    feature_importance: 2
+    rfe: 3
+    
+bayes_classification_params:
+  test_size: 0.2
+  random_state: 42
+  var_smoothing: 1e-9
+
+# Parámetros para Random Forest Classifier
+random_forest_params:
+  # División de datos
+  test_size: 0.2
+  random_state: 42
+  
+  # Parámetros del modelo Random Forest
+  n_estimators: 200              # Número de árboles en el bosque
+  max_depth: 20                  # Profundidad máxima de los árboles
+  min_samples_split: 5           # Mín muestras requeridas para dividir un nodo
+  min_samples_leaf: 2            # Mín muestras requeridas en una hoja
+  max_features: "sqrt"           # Número de features a considerar en cada división
+  bootstrap: true                # Si usar bootstrap al construir árboles
+  class_weight: "balanced"       # Balancear clases automáticamente
+  n_jobs: -1                     # Usar todos los cores disponibles
+  
+  # Opciones adicionales
+  criterion: "gini"              # Función para medir la calidad de la división
+  max_leaf_nodes: null           # Número máximo de hojas
+  min_impurity_decrease: 0.0     # Disminución mínima de impureza requerida
+  ccp_alpha: 0.0                 # Parámetro de poda de complejidad
+
+# Parámetros para SVM Classifier
+svm_params:
+  # División de datos
+  test_size: 0.2
+  random_state: 42
+  
+  # Parámetros principales del SVM
+  C: 1.0                      # Parámetro de regularización (1.0 es default)
+  kernel: "rbf"               # Tipo de kernel: 'linear', 'poly', 'rbf', 'sigmoid'
+  gamma: "scale"              # Coeficiente del kernel ('scale' o 'auto' o float)
+  degree: 3                   # Grado del kernel polinomial (solo para 'poly')
+  class_weight: "balanced"    # Balanceo de clases: 'balanced' o null
+  
+  # Parámetros adicionales
+  coef0: 0.0                  # Término independiente (para 'poly' y 'sigmoid')
+  shrinking: true             # Usar heurística de shrinking
+  tol: 0.001                  # Tolerancia para criterio de parada
+  cache_size: 200             # Tamaño de cache del kernel en MB
+  max_iter: -1                # Límite de iteraciones (-1 = sin límite)
+  
+  # Nota: SVM automáticamente usa StandardScaler en el nodo
+
+  # Parámetros para KNN Classifier
+knn_params:
+  # División de datos
+  test_size: 0.2
+  random_state: 42
+  
+  # Parámetros principales del KNN
+  n_neighbors: 5              # Número de vecinos más cercanos
+  weights: "uniform"          # Pesos: 'uniform', 'distance' o función callable
+  algorithm: "auto"           # Algoritmo: 'auto', 'ball_tree', 'kd_tree', 'brute'
+  leaf_size: 30               # Tamaño de hoja para BallTree o KDTree
+  metric: "minkowski"         # Métrica de distancia
+  p: 2                        # Parámetro para métrica minkowski (1=manhattan, 2=euclidean)
+  n_jobs: -1                  # Usar todos los cores disponibles
+  
+  # Optimización automática de k
+  optimize_k: true            # Si optimizar automáticamente el número de vecinos
+  k_range: [3, 5, 7, 9, 11, 15, 21]  # Rango de k para probar
+  
+  # Análisis adicional
+  analyze_distances: true     # Si analizar distancias promedio a vecinos
+  
+  # Notas sobre parámetros:
+  # - weights='distance': Pesos inversamente proporcionales a la distancia
+  # - algorithm='auto': Elige automáticamente el mejor algoritmo
+  # - metric='euclidean': Distancia euclidiana clásica
+  # - metric='manhattan': Distancia de Manhattan (L1)
+  # - metric='chebyshev': Distancia de Chebyshev (L∞)
+
+# Parámetros para Logistic Regression Classifier
+logistic_regression_params:
+  # División de datos
+  test_size: 0.2
+  random_state: 42
+  
+  # Escalado de features
+  scale_features: true        # Si escalar features (recomendado)
+  
+  # Parámetros principales de Logistic Regression
+  C: 1.0                      # Regularización (inverso: menor C = más regularización)
+  penalty: "l2"               # Tipo de regularización: 'l1', 'l2', 'elasticnet', 'none'
+  solver: "lbfgs"             # Algoritmo: 'lbfgs', 'liblinear', 'newton-cg', 'sag', 'saga'
+  max_iter: 1000              # Máximo número de iteraciones
+  class_weight: "balanced"    # Balanceo de clases: 'balanced' o null
+  n_jobs: -1                  # Usar todos los cores disponibles
+  
+  # Parámetros para ElasticNet (solo si penalty='elasticnet')
+  l1_ratio: 0.5               # Balance entre L1 y L2 (solo para elasticnet)
+  
+  # Optimización de hiperparámetros
+  optimize_hyperparams: false  # Si optimizar automáticamente
+  C_range: [0.01, 0.1, 1.0, 10.0, 100.0]  # Rango de C para optimizar
+  penalty_options: ["l1", "l2"]  # Penalties para probar
+  
+  # Parámetros adicionales
+  tol: 0.0001                 # Tolerancia para criterio de parada
+  fit_intercept: true         # Si ajustar el término independiente
+  intercept_scaling: 1.0      # Escalado del término independiente
+  
+  # Notas sobre combinaciones válidas:
+  # - 'lbfgs': Soporta solo 'l2' y 'none'
+  # - 'liblinear': Soporta 'l1' y 'l2' (bueno para datasets pequeños)
+  # - 'saga': Soporta 'l1', 'l2', 'elasticnet' y 'none'
+  # - 'newton-cg', 'sag': Soportan solo 'l2' y 'none'
+
+# Parámetros para Decision Tree Classifier
+decision_tree_params:
+  # División de datos
+  test_size: 0.2
+  random_state: 42
+  
+  # Parámetros principales del Decision Tree
+  criterion: "gini"           # Métrica de impureza: 'gini', 'entropy', 'log_loss'
+  max_depth: 10               # Profundidad máxima (null = sin límite, cuidado overfitting)
+  min_samples_split: 20       # Mínimo de muestras para dividir un nodo
+  min_samples_leaf: 10        # Mínimo de muestras en una hoja
+  max_features: null          # Máximo features por split: null, 'sqrt', 'log2', int, float
+  class_weight: "balanced"    # Balanceo de clases: 'balanced' o null
+  
+  # Parámetros para evitar overfitting
+  min_impurity_decrease: 0.01 # Mínima disminución de impureza para split
+  max_leaf_nodes: null        # Máximo número de hojas (null = sin límite)
+  
+  # Optimización de hiperparámetros
+  optimize_hyperparams: false # Si optimizar automáticamente
+  max_depth_range: [5, 10, 15, 20, null]  # Profundidades para probar
+  min_samples_split_range: [2, 5, 10, 20, 50]  # min_samples_split para probar
+  min_samples_leaf_range: [1, 5, 10, 20]  # min_samples_leaf para probar
+  criterion_options: ["gini", "entropy"]  # Criterios para probar
+  
+  # Parámetros adicionales
+  splitter: "best"           # Estrategia de split: 'best', 'random'
+  
+  # Configuración de análisis
+  export_tree_rules: true    # Si exportar reglas del árbol
+  max_rules_depth: 3         # Profundidad máxima para mostrar reglas
+  
+  # Notas sobre parámetros:
+  # - max_depth: Controla complejidad (menor = menos overfitting)
+  # - min_samples_split: Mayor valor = árbol más simple
+  # - min_samples_leaf: Mayor valor = decisiones más conservadoras
+  # - gini: Más rápido, entropy: Puede dar árboles más balanceados
+  # - class_weight='balanced': Importante para datasets desbalanceados
+
+  # Parámetros para Gradient Boosting Classifier
+gradient_boosting_params:
+  # División de datos
+  test_size: 0.2
+  random_state: 42
+  
+  # Parámetros principales del Gradient Boosting
+  n_estimators: 100           # Número de árboles débiles (más = mejor, pero más lento)
+  learning_rate: 0.1          # Tasa de aprendizaje (menor = más conservador)
+  max_depth: 3                # Profundidad de cada árbol individual (típicamente 3-8)
+  min_samples_split: 2        # Mínimo de muestras para dividir un nodo
+  min_samples_leaf: 1         # Mínimo de muestras en una hoja
+  subsample: 1.0              # Fracción de muestras para cada árbol (0.8-1.0)
+  max_features: null          # Máximo features por split: null, 'sqrt', 'log2', int, float
+  
+  # Parámetros para early stopping y regularización
+  validation_fraction: 0.1    # Fracción para validación interna
+  n_iter_no_change: 5         # Paciencia para early stopping
+  tol: 0.0001                 # Tolerancia para early stopping
+  
+  # Optimización de hiperparámetros
+  optimize_hyperparams: false # Si optimizar automáticamente (LENTO!)
+  n_estimators_range: [50, 100, 200]        # n_estimators para probar
+  learning_rate_range: [0.01, 0.1, 0.2]     # learning_rates para probar
+  max_depth_range: [3, 5, 7]                # max_depths para probar
+  min_samples_split_range: [2, 5, 10]       # min_samples_split para probar
+  
+  # Parámetros adicionales avanzados
+  loss: "log_loss"            # Función de pérdida ('log_loss' para clasificación)
+  criterion: "friedman_mse"   # Criterio para encontrar splits
+  init: null                  # Estimador inicial (null = usar default)
+  warm_start: false           # Si continuar entrenamiento previo
+  
+  # Configuración de análisis
+  analyze_convergence: true   # Si analizar convergencia durante entrenamiento
+  detect_overfitting: true    # Si detectar overfitting
+  
+  # Notas sobre parámetros:
+  # Trade-offs importantes:
+  # - n_estimators ↑ + learning_rate ↓ = Mejor generalización pero más lento
+  # - max_depth ↑ = Más complejo pero riesgo overfitting
+  # - subsample < 1.0 = Regularización (como Random Forest)
+  # - validation_fraction para monitorear overfitting
+  
+  # Configuraciones recomendadas:
+  # - Rápido: n_estimators=50, learning_rate=0.2, max_depth=3
+  # - Balanceado: n_estimators=100, learning_rate=0.1, max_depth=3
+  # - Preciso: n_estimators=200, learning_rate=0.05, max_depth=5
+
+#---------------------------------------------------------
+
+  # Model Training Parameters
+# Add these to conf/base/parameters.yml
+
+model_training:
+  classification:
+    algorithm: "random_forest"  # Options: "random_forest", "logistic_regression"
+    n_estimators: 100
+    max_depth: 10
+    random_state: 42
+    
+  regression:
+    algorithm: "random_forest"  # Options: "random_forest", "linear_regression"
+    n_estimators: 100
+    max_depth: 10
+    random_state: 42

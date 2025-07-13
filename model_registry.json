@@ -1,0 +1,1095 @@
+{
+  "created_at": "2025-07-12T19:05:33.055154",
+  "config": {
+    "storage_type": "huggingface",
+    "repository": "tu-usuario/weather-aus-models",
+    "local_cache_dir": "data/.model_cache",
+    "size_threshold_mb": 10,
+    "max_versions": 3,
+    "critical_models": [
+      "classification_models_dict.pkl",
+      "random_forest_classification_model.pkl",
+      "gradient_boosting_regressor_model.pickle"
+    ],
+    "model_groups": {
+      "classification": [
+        "logistic_regression_model.pkl",
+        "random_forest_classification_model.pkl",
+        "svm_classification_model.pkl",
+        "decision_tree_model.pkl",
+        "bayes_classification_model.pkl",
+        "knn_model.pkl",
+        "gradient_boosting_model.pkl"
+      ],
+      "regression": [
+        "gaussian_nb_regressor_model.pickle",
+        "gradient_boosting_regressor_model.pickle",
+        "ridge_regressor_model.pickle",
+        "lasso_regressor_model.pickle",
+        "svr_model.pickle"
+      ]
+    }
+  },
+  "stats": {
+    "total_files": 117,
+    "large_files": 30,
+    "total_size_mb": 882.76,
+    "remote_size_mb": 795.07,
+    "git_size_reduction": "90.1%"
+  },
+  "models": {
+    "data\\06_models\\bayes_classification_model.pkl": {
+      "filename": "bayes_classification_model.pkl",
+      "size_mb": 0.35,
+      "hash": "4f185f6cfe665b873972870065b143abc58679dd7fcd0741e84038616c0065c3",
+      "last_modified": "2025-06-25T05:15:42.162754",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": "classification"
+    },
+    "data\\06_models\\classification_models_dict.pkl": {
+      "filename": "classification_models_dict.pkl",
+      "size_mb": 26.66,
+      "hash": "cbe1d6ec7ec3f3afd4dcee8dcdeafcb4eeaa95ac9217aebe759e40d78950aa8d",
+      "last_modified": "2025-06-25T06:13:36.384946",
+      "needs_remote_storage": true,
+      "is_critical": true,
+      "model_group": null
+    },
+    "data\\06_models\\decision_tree_model.pkl": {
+      "filename": "decision_tree_model.pkl",
+      "size_mb": 0.0,
+      "hash": "cdee5de19fc9c744aaa97add2d8c63368ae84426c7240e93bd18f927c02859a2",
+      "last_modified": "2025-06-25T05:15:46.436416",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": "classification"
+    },
+    "data\\06_models\\gradient_boosting_model.pkl": {
+      "filename": "gradient_boosting_model.pkl",
+      "size_mb": 0.06,
+      "hash": "465147cb60390e65e493946f867dfbe90cf7842e937788e0f02ee5b01c654a3d",
+      "last_modified": "2025-06-25T05:16:07.298060",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": "classification"
+    },
+    "data\\06_models\\knn_model.pkl": {
+      "filename": "knn_model.pkl",
+      "size_mb": 13.96,
+      "hash": "6411b1388fed7c16677977a67e798aad1c0361816e4bb88a37f4c5f0cda45d6a",
+      "last_modified": "2025-06-25T05:19:50.579859",
+      "needs_remote_storage": true,
+      "is_critical": false,
+      "model_group": "classification"
+    },
+    "data\\06_models\\knn_regressor_model.joblib": {
+      "filename": "knn_regressor_model.joblib",
+      "size_mb": 6.2,
+      "hash": "3f5c80478901f699628da1af756d3979a2837a27be334c704ec962d57bc87bde",
+      "last_modified": "2025-06-25T05:19:51.348664",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\06_models\\knn_regressor_scaler.joblib": {
+      "filename": "knn_regressor_scaler.joblib",
+      "size_mb": 0.0,
+      "hash": "17be0df1e3316566162f9f9f8c605b863a83635532eb387dc83a55209ce93dc2",
+      "last_modified": "2025-06-25T05:19:51.296702",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\06_models\\linear_regression_model.joblib": {
+      "filename": "linear_regression_model.joblib",
+      "size_mb": 0.0,
+      "hash": "d17d9eca7f7524b9b7084154fde505f75288e852b3baf2f8dc5e59efceff8a1f",
+      "last_modified": "2025-06-25T05:20:41.849854",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\06_models\\logistic_regression_model.pkl": {
+      "filename": "logistic_regression_model.pkl",
+      "size_mb": 0.0,
+      "hash": "29aaae1af7a2655581a9718dd95d38716e30ff18d0574354c089e45762716e2a",
+      "last_modified": "2025-06-25T05:20:53.843822",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": "classification"
+    },
+    "data\\06_models\\random_forest_classification_model.pkl": {
+      "filename": "random_forest_classification_model.pkl",
+      "size_mb": 10.98,
+      "hash": "10db9416e9737be1f13513a8d256af196ca814ead097d91fcf9043e28b3c4315",
+      "last_modified": "2025-06-25T05:14:32.521435",
+      "needs_remote_storage": true,
+      "is_critical": true,
+      "model_group": "classification"
+    },
+    "data\\06_models\\random_forest_model.joblib": {
+      "filename": "random_forest_model.joblib",
+      "size_mb": 153.01,
+      "hash": "e0138b922661cfb4e683ee189bd16c9c8b6f7929cd7748c205c4de55b90c3472",
+      "last_modified": "2025-06-25T05:15:07.130759",
+      "needs_remote_storage": true,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\06_models\\svm_classification_model.pkl": {
+      "filename": "svm_classification_model.pkl",
+      "size_mb": 1.3,
+      "hash": "ff5ec54f7053bd27978ce90b7eabee28a053c3c407d9799fc36a26fcf1ff1c2d",
+      "last_modified": "2025-06-25T06:13:29.296510",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": "classification"
+    },
+    "data\\06_models\\gaussian_nb_regressor_model.pickle\\2025-05-14T08.32.23.992Z\\gaussian_nb_regressor_model.pickle": {
+      "filename": "gaussian_nb_regressor_model.pickle",
+      "size_mb": 0.01,
+      "hash": "54d6e272b200282dfa1ab14fa6e154e0b1287eb7d25119b7a5610b48d1f6dc94",
+      "last_modified": "2025-05-14T04:32:29.743092",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": "regression"
+    },
+    "data\\06_models\\gaussian_nb_regressor_model.pickle\\2025-06-23T02.47.21.797Z\\gaussian_nb_regressor_model.pickle": {
+      "filename": "gaussian_nb_regressor_model.pickle",
+      "size_mb": 0.01,
+      "hash": "54d6e272b200282dfa1ab14fa6e154e0b1287eb7d25119b7a5610b48d1f6dc94",
+      "last_modified": "2025-06-22T22:47:28.895910",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": "regression"
+    },
+    "data\\06_models\\gaussian_nb_regressor_model.pickle\\2025-06-25T04.48.21.847Z\\gaussian_nb_regressor_model.pickle": {
+      "filename": "gaussian_nb_regressor_model.pickle",
+      "size_mb": 0.01,
+      "hash": "54d6e272b200282dfa1ab14fa6e154e0b1287eb7d25119b7a5610b48d1f6dc94",
+      "last_modified": "2025-06-25T01:35:24.017118",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": "regression"
+    },
+    "data\\06_models\\gaussian_nb_regressor_model.pickle\\2025-06-25T07.46.20.194Z\\gaussian_nb_regressor_model.pickle": {
+      "filename": "gaussian_nb_regressor_model.pickle",
+      "size_mb": 0.01,
+      "hash": "54d6e272b200282dfa1ab14fa6e154e0b1287eb7d25119b7a5610b48d1f6dc94",
+      "last_modified": "2025-06-25T03:46:34.359720",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": "regression"
+    },
+    "data\\06_models\\gaussian_nb_regressor_model.pickle\\2025-06-25T09.14.09.147Z\\gaussian_nb_regressor_model.pickle": {
+      "filename": "gaussian_nb_regressor_model.pickle",
+      "size_mb": 0.01,
+      "hash": "54d6e272b200282dfa1ab14fa6e154e0b1287eb7d25119b7a5610b48d1f6dc94",
+      "last_modified": "2025-06-25T06:13:41.301593",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": "regression"
+    },
+    "data\\06_models\\gradient_boosting_regressor_model.pickle\\2025-05-14T08.40.33.361Z\\gradient_boosting_regressor_model.pickle": {
+      "filename": "gradient_boosting_regressor_model.pickle",
+      "size_mb": 0.13,
+      "hash": "daec69b7b56275491b024ceaf11ec124b203e6ce94c1e6d89d968f63ce18b489",
+      "last_modified": "2025-05-14T04:40:48.394598",
+      "needs_remote_storage": false,
+      "is_critical": true,
+      "model_group": "regression"
+    },
+    "data\\06_models\\gradient_boosting_regressor_model.pickle\\2025-06-25T04.48.21.847Z\\gradient_boosting_regressor_model.pickle": {
+      "filename": "gradient_boosting_regressor_model.pickle",
+      "size_mb": 0.13,
+      "hash": "daec69b7b56275491b024ceaf11ec124b203e6ce94c1e6d89d968f63ce18b489",
+      "last_modified": "2025-06-25T01:35:33.700178",
+      "needs_remote_storage": false,
+      "is_critical": true,
+      "model_group": "regression"
+    },
+    "data\\06_models\\gradient_boosting_regressor_model.pickle\\2025-06-25T07.46.20.194Z\\gradient_boosting_regressor_model.pickle": {
+      "filename": "gradient_boosting_regressor_model.pickle",
+      "size_mb": 0.13,
+      "hash": "daec69b7b56275491b024ceaf11ec124b203e6ce94c1e6d89d968f63ce18b489",
+      "last_modified": "2025-06-25T03:46:43.497067",
+      "needs_remote_storage": false,
+      "is_critical": true,
+      "model_group": "regression"
+    },
+    "data\\06_models\\gradient_boosting_regressor_model.pickle\\2025-06-25T09.14.09.147Z\\gradient_boosting_regressor_model.pickle": {
+      "filename": "gradient_boosting_regressor_model.pickle",
+      "size_mb": 0.13,
+      "hash": "daec69b7b56275491b024ceaf11ec124b203e6ce94c1e6d89d968f63ce18b489",
+      "last_modified": "2025-06-25T06:13:51.159502",
+      "needs_remote_storage": false,
+      "is_critical": true,
+      "model_group": "regression"
+    },
+    "data\\06_models\\lasso_regressor_model.pickle\\2025-05-14T08.51.17.167Z\\lasso_regressor_model.pickle": {
+      "filename": "lasso_regressor_model.pickle",
+      "size_mb": 0.0,
+      "hash": "9e022cd96147ffad7cb68f8c54c4097107cfd324e3a9a7dbec2ab2b95410a5b1",
+      "last_modified": "2025-05-14T04:51:21.817806",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": "regression"
+    },
+    "data\\06_models\\lasso_regressor_model.pickle\\2025-06-23T02.46.21.483Z\\lasso_regressor_model.pickle": {
+      "filename": "lasso_regressor_model.pickle",
+      "size_mb": 0.0,
+      "hash": "9e022cd96147ffad7cb68f8c54c4097107cfd324e3a9a7dbec2ab2b95410a5b1",
+      "last_modified": "2025-06-22T22:46:28.042776",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": "regression"
+    },
+    "data\\06_models\\lasso_regressor_model.pickle\\2025-06-25T04.48.21.847Z\\lasso_regressor_model.pickle": {
+      "filename": "lasso_regressor_model.pickle",
+      "size_mb": 0.0,
+      "hash": "9e022cd96147ffad7cb68f8c54c4097107cfd324e3a9a7dbec2ab2b95410a5b1",
+      "last_modified": "2025-06-25T01:35:34.032074",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": "regression"
+    },
+    "data\\06_models\\lasso_regressor_model.pickle\\2025-06-25T07.46.20.194Z\\lasso_regressor_model.pickle": {
+      "filename": "lasso_regressor_model.pickle",
+      "size_mb": 0.0,
+      "hash": "9e022cd96147ffad7cb68f8c54c4097107cfd324e3a9a7dbec2ab2b95410a5b1",
+      "last_modified": "2025-06-25T03:46:43.773648",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": "regression"
+    },
+    "data\\06_models\\lasso_regressor_model.pickle\\2025-06-25T09.14.09.147Z\\lasso_regressor_model.pickle": {
+      "filename": "lasso_regressor_model.pickle",
+      "size_mb": 0.0,
+      "hash": "9e022cd96147ffad7cb68f8c54c4097107cfd324e3a9a7dbec2ab2b95410a5b1",
+      "last_modified": "2025-06-25T06:13:51.834239",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": "regression"
+    },
+    "data\\06_models\\ridge_regressor_model.pickle\\2025-05-14T08.47.22.735Z\\ridge_regressor_model.pickle": {
+      "filename": "ridge_regressor_model.pickle",
+      "size_mb": 0.0,
+      "hash": "421b4097a53aaa9454a8759f181af40b46c5975bd05bb13da571736c34eb1991",
+      "last_modified": "2025-05-14T04:47:27.333652",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": "regression"
+    },
+    "data\\06_models\\ridge_regressor_model.pickle\\2025-06-23T02.46.05.887Z\\ridge_regressor_model.pickle": {
+      "filename": "ridge_regressor_model.pickle",
+      "size_mb": 0.0,
+      "hash": "421b4097a53aaa9454a8759f181af40b46c5975bd05bb13da571736c34eb1991",
+      "last_modified": "2025-06-22T22:46:12.864855",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": "regression"
+    },
+    "data\\06_models\\ridge_regressor_model.pickle\\2025-06-25T04.48.21.847Z\\ridge_regressor_model.pickle": {
+      "filename": "ridge_regressor_model.pickle",
+      "size_mb": 0.0,
+      "hash": "421b4097a53aaa9454a8759f181af40b46c5975bd05bb13da571736c34eb1991",
+      "last_modified": "2025-06-25T01:35:34.305393",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": "regression"
+    },
+    "data\\06_models\\ridge_regressor_model.pickle\\2025-06-25T07.46.20.194Z\\ridge_regressor_model.pickle": {
+      "filename": "ridge_regressor_model.pickle",
+      "size_mb": 0.0,
+      "hash": "421b4097a53aaa9454a8759f181af40b46c5975bd05bb13da571736c34eb1991",
+      "last_modified": "2025-06-25T03:46:44.026146",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": "regression"
+    },
+    "data\\06_models\\ridge_regressor_model.pickle\\2025-06-25T09.14.09.147Z\\ridge_regressor_model.pickle": {
+      "filename": "ridge_regressor_model.pickle",
+      "size_mb": 0.0,
+      "hash": "421b4097a53aaa9454a8759f181af40b46c5975bd05bb13da571736c34eb1991",
+      "last_modified": "2025-06-25T06:13:52.175007",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": "regression"
+    },
+    "data\\06_models\\svr_model.pickle\\2025-05-14T08.56.12.014Z\\svr_model.pickle": {
+      "filename": "svr_model.pickle",
+      "size_mb": 3.29,
+      "hash": "eed86e596379dc0f5707944747a610bf0e07b32429fbc94819dc6cb3f875e763",
+      "last_modified": "2025-05-14T04:56:59.556148",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": "regression"
+    },
+    "data\\06_models\\svr_model.pickle\\2025-05-14T09.01.29.444Z\\svr_model.pickle": {
+      "filename": "svr_model.pickle",
+      "size_mb": 3.29,
+      "hash": "eed86e596379dc0f5707944747a610bf0e07b32429fbc94819dc6cb3f875e763",
+      "last_modified": "2025-05-14T05:02:17.423261",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": "regression"
+    },
+    "data\\06_models\\svr_model.pickle\\2025-06-25T04.48.21.847Z\\svr_model.pickle": {
+      "filename": "svr_model.pickle",
+      "size_mb": 3.29,
+      "hash": "eed86e596379dc0f5707944747a610bf0e07b32429fbc94819dc6cb3f875e763",
+      "last_modified": "2025-06-25T01:36:18.118672",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": "regression"
+    },
+    "data\\06_models\\svr_model.pickle\\2025-06-25T07.46.20.194Z\\svr_model.pickle": {
+      "filename": "svr_model.pickle",
+      "size_mb": 3.29,
+      "hash": "eed86e596379dc0f5707944747a610bf0e07b32429fbc94819dc6cb3f875e763",
+      "last_modified": "2025-06-25T03:47:25.784638",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": "regression"
+    },
+    "data\\06_models\\svr_model.pickle\\2025-06-25T09.14.09.147Z\\svr_model.pickle": {
+      "filename": "svr_model.pickle",
+      "size_mb": 3.29,
+      "hash": "eed86e596379dc0f5707944747a610bf0e07b32429fbc94819dc6cb3f875e763",
+      "last_modified": "2025-06-25T06:14:33.703079",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": "regression"
+    },
+    "data\\06_models\\svr_scaler.pickle\\2025-05-14T08.56.12.014Z\\svr_scaler.pickle": {
+      "filename": "svr_scaler.pickle",
+      "size_mb": 0.0,
+      "hash": "9cd22fe3e2d3a15703b878725f744ac06df3e6f428a7dd1d9b645e081660451b",
+      "last_modified": "2025-05-14T04:56:17.990029",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\06_models\\svr_scaler.pickle\\2025-05-14T09.01.29.444Z\\svr_scaler.pickle": {
+      "filename": "svr_scaler.pickle",
+      "size_mb": 0.0,
+      "hash": "9cd22fe3e2d3a15703b878725f744ac06df3e6f428a7dd1d9b645e081660451b",
+      "last_modified": "2025-05-14T05:01:34.119700",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\06_models\\svr_scaler.pickle\\2025-06-25T04.48.21.847Z\\svr_scaler.pickle": {
+      "filename": "svr_scaler.pickle",
+      "size_mb": 0.0,
+      "hash": "9cd22fe3e2d3a15703b878725f744ac06df3e6f428a7dd1d9b645e081660451b",
+      "last_modified": "2025-06-25T00:49:42.084496",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\06_models\\svr_scaler.pickle\\2025-06-25T06.36.59.367Z\\svr_scaler.pickle": {
+      "filename": "svr_scaler.pickle",
+      "size_mb": 0.0,
+      "hash": "9cd22fe3e2d3a15703b878725f744ac06df3e6f428a7dd1d9b645e081660451b",
+      "last_modified": "2025-06-25T02:38:34.332223",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\06_models\\svr_scaler.pickle\\2025-06-25T09.14.09.147Z\\svr_scaler.pickle": {
+      "filename": "svr_scaler.pickle",
+      "size_mb": 0.0,
+      "hash": "9cd22fe3e2d3a15703b878725f744ac06df3e6f428a7dd1d9b645e081660451b",
+      "last_modified": "2025-06-25T05:15:37.931620",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\05_model_input\\X_test_gaussian_nb.pickle": {
+      "filename": "X_test_gaussian_nb.pickle",
+      "size_mb": 1.55,
+      "hash": "eb32ed672e9b5c8d986c33eb4f2b7979fb696e0526eafaa4eb47660715a500aa",
+      "last_modified": "2025-06-25T05:15:34.561761",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\05_model_input\\X_test_gradient_boosting.pickle": {
+      "filename": "X_test_gradient_boosting.pickle",
+      "size_mb": 1.55,
+      "hash": "eb32ed672e9b5c8d986c33eb4f2b7979fb696e0526eafaa4eb47660715a500aa",
+      "last_modified": "2025-06-25T05:15:35.351430",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\05_model_input\\X_test_lasso.pickle": {
+      "filename": "X_test_lasso.pickle",
+      "size_mb": 1.55,
+      "hash": "eb32ed672e9b5c8d986c33eb4f2b7979fb696e0526eafaa4eb47660715a500aa",
+      "last_modified": "2025-06-25T05:15:36.220506",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\05_model_input\\X_test_ridge.pickle": {
+      "filename": "X_test_ridge.pickle",
+      "size_mb": 1.55,
+      "hash": "eb32ed672e9b5c8d986c33eb4f2b7979fb696e0526eafaa4eb47660715a500aa",
+      "last_modified": "2025-06-25T05:15:36.993862",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\05_model_input\\X_test_svr.pickle": {
+      "filename": "X_test_svr.pickle",
+      "size_mb": 1.55,
+      "hash": "a01fbda9c928e11b6e69a3b753fc439a634e2fe4450bbd3d65e106ac13e6983e",
+      "last_modified": "2025-06-25T05:15:38.104990",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\05_model_input\\X_test_svr_scaled.pickle": {
+      "filename": "X_test_svr_scaled.pickle",
+      "size_mb": 1.55,
+      "hash": "cf553cd36a910e963cd17e666b3c493aaf2c1fcd9ac516d39779240b755f1f0e",
+      "last_modified": "2025-06-25T05:15:37.867140",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\05_model_input\\X_train_gaussian_nb.pickle": {
+      "filename": "X_train_gaussian_nb.pickle",
+      "size_mb": 6.2,
+      "hash": "a362c6442f73c0ac6c0deefc7e5e515a868df85e8622ac79e96a7fa3b5896dd8",
+      "last_modified": "2025-06-25T05:15:34.494765",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\05_model_input\\X_train_gradient_boosting.pickle": {
+      "filename": "X_train_gradient_boosting.pickle",
+      "size_mb": 6.2,
+      "hash": "a362c6442f73c0ac6c0deefc7e5e515a868df85e8622ac79e96a7fa3b5896dd8",
+      "last_modified": "2025-06-25T05:15:35.282491",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\05_model_input\\X_train_lasso.pickle": {
+      "filename": "X_train_lasso.pickle",
+      "size_mb": 6.2,
+      "hash": "a362c6442f73c0ac6c0deefc7e5e515a868df85e8622ac79e96a7fa3b5896dd8",
+      "last_modified": "2025-06-25T05:15:36.152997",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\05_model_input\\X_train_ridge.pickle": {
+      "filename": "X_train_ridge.pickle",
+      "size_mb": 6.2,
+      "hash": "a362c6442f73c0ac6c0deefc7e5e515a868df85e8622ac79e96a7fa3b5896dd8",
+      "last_modified": "2025-06-25T05:15:36.924679",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\05_model_input\\X_train_svr.pickle": {
+      "filename": "X_train_svr.pickle",
+      "size_mb": 6.2,
+      "hash": "f215f3c3009c3e1a83b839d369b042085b477c8385cd2e9a7b006fecc8e941c3",
+      "last_modified": "2025-06-25T05:15:38.042451",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\05_model_input\\X_train_svr_scaled.pickle": {
+      "filename": "X_train_svr_scaled.pickle",
+      "size_mb": 6.2,
+      "hash": "be5aa20d27acc254b3a69cba579d289950108d83c6826a7c428fe85c63d71641",
+      "last_modified": "2025-06-25T05:15:37.813825",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\05_model_input\\y_test_gaussian_nb.pickle": {
+      "filename": "y_test_gaussian_nb.pickle",
+      "size_mb": 0.26,
+      "hash": "07897fbeb533d389379adc24809a6a48d8fae0d06ff7eada7962b44b34644b41",
+      "last_modified": "2025-06-25T05:15:34.618625",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\05_model_input\\y_test_gradient_boosting.pickle": {
+      "filename": "y_test_gradient_boosting.pickle",
+      "size_mb": 0.26,
+      "hash": "07897fbeb533d389379adc24809a6a48d8fae0d06ff7eada7962b44b34644b41",
+      "last_modified": "2025-06-25T05:15:35.407886",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\05_model_input\\y_test_lasso.pickle": {
+      "filename": "y_test_lasso.pickle",
+      "size_mb": 0.26,
+      "hash": "07897fbeb533d389379adc24809a6a48d8fae0d06ff7eada7962b44b34644b41",
+      "last_modified": "2025-06-25T05:15:36.276087",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\05_model_input\\y_test_ridge.pickle": {
+      "filename": "y_test_ridge.pickle",
+      "size_mb": 0.26,
+      "hash": "07897fbeb533d389379adc24809a6a48d8fae0d06ff7eada7962b44b34644b41",
+      "last_modified": "2025-06-25T05:15:37.047739",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\05_model_input\\y_test_svr.pickle": {
+      "filename": "y_test_svr.pickle",
+      "size_mb": 0.26,
+      "hash": "07897fbeb533d389379adc24809a6a48d8fae0d06ff7eada7962b44b34644b41",
+      "last_modified": "2025-06-25T05:15:37.917030",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\05_model_input\\y_train_gaussian_nb.pickle": {
+      "filename": "y_train_gaussian_nb.pickle",
+      "size_mb": 1.03,
+      "hash": "2a6da22335ea9034514269bc4406466e7cbdf179cf20bde3f3ae474f70edb4d8",
+      "last_modified": "2025-06-25T05:15:34.604272",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\05_model_input\\y_train_gradient_boosting.pickle": {
+      "filename": "y_train_gradient_boosting.pickle",
+      "size_mb": 1.03,
+      "hash": "2a6da22335ea9034514269bc4406466e7cbdf179cf20bde3f3ae474f70edb4d8",
+      "last_modified": "2025-06-25T05:15:35.393301",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\05_model_input\\y_train_lasso.pickle": {
+      "filename": "y_train_lasso.pickle",
+      "size_mb": 1.03,
+      "hash": "2a6da22335ea9034514269bc4406466e7cbdf179cf20bde3f3ae474f70edb4d8",
+      "last_modified": "2025-06-25T05:15:36.262099",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\05_model_input\\y_train_ridge.pickle": {
+      "filename": "y_train_ridge.pickle",
+      "size_mb": 1.03,
+      "hash": "2a6da22335ea9034514269bc4406466e7cbdf179cf20bde3f3ae474f70edb4d8",
+      "last_modified": "2025-06-25T05:15:37.033715",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\05_model_input\\y_train_svr.pickle": {
+      "filename": "y_train_svr.pickle",
+      "size_mb": 1.03,
+      "hash": "2a6da22335ea9034514269bc4406466e7cbdf179cf20bde3f3ae474f70edb4d8",
+      "last_modified": "2025-06-25T05:15:37.903793",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\02_intermediate\\versioned_data.pkl\\2025-06-23T02.52.13.774Z\\versioned_data.pkl": {
+      "filename": "versioned_data.pkl",
+      "size_mb": 24.75,
+      "hash": "3b1c7e03d0b2d270ac5ab979d9b3544a0b8ca2f1a15b58c0cbc14bd980871e7b",
+      "last_modified": "2025-06-22T22:52:21.524471",
+      "needs_remote_storage": true,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\02_intermediate\\versioned_data.pkl\\2025-06-23T03.07.34.642Z\\versioned_data.pkl": {
+      "filename": "versioned_data.pkl",
+      "size_mb": 24.75,
+      "hash": "52c82b7a3b21707ca0e7d5d474b06cd5376f166749745607bc672a329d09044d",
+      "last_modified": "2025-06-22T23:07:44.099640",
+      "needs_remote_storage": true,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\02_intermediate\\versioned_data.pkl\\2025-06-23T03.12.17.564Z\\versioned_data.pkl": {
+      "filename": "versioned_data.pkl",
+      "size_mb": 24.75,
+      "hash": "525b0f68d6760618dae94a914c46887dd70ba4854dc06be6604453cdb36af3d1",
+      "last_modified": "2025-06-22T23:12:27.249277",
+      "needs_remote_storage": true,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\02_intermediate\\versioned_data.pkl\\2025-06-23T03.13.37.295Z\\versioned_data.pkl": {
+      "filename": "versioned_data.pkl",
+      "size_mb": 24.75,
+      "hash": "46cec488aca12beb2770e2074024c791d038b997e140fb98115e29de7ab4bfbb",
+      "last_modified": "2025-06-22T23:13:46.004305",
+      "needs_remote_storage": true,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\02_intermediate\\versioned_data.pkl\\2025-06-23T03.35.25.947Z\\versioned_data.pkl": {
+      "filename": "versioned_data.pkl",
+      "size_mb": 24.75,
+      "hash": "d383aff07fcb54e994d8c06d1579fc6474b18c20375114dfb2dbdcd6f897fe1a",
+      "last_modified": "2025-06-22T23:35:36.687743",
+      "needs_remote_storage": true,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\02_intermediate\\versioned_data.pkl\\2025-06-23T03.41.56.180Z\\versioned_data.pkl": {
+      "filename": "versioned_data.pkl",
+      "size_mb": 24.75,
+      "hash": "7a4852c79322331c894df9c30a35639b9f8134e1c4c252678ed2b6a4180c2f48",
+      "last_modified": "2025-06-22T23:42:06.668311",
+      "needs_remote_storage": true,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\02_intermediate\\versioned_data.pkl\\2025-06-23T03.43.15.263Z\\versioned_data.pkl": {
+      "filename": "versioned_data.pkl",
+      "size_mb": 24.75,
+      "hash": "08d2fd39f677d75f4f2c2ce7a3461036849394032eeca082ac1ab80455d3a47d",
+      "last_modified": "2025-06-22T23:43:25.829112",
+      "needs_remote_storage": true,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\02_intermediate\\versioned_data.pkl\\2025-06-23T03.43.39.783Z\\versioned_data.pkl": {
+      "filename": "versioned_data.pkl",
+      "size_mb": 24.75,
+      "hash": "07e6b99d0fe360962849cb818ae6c9dc254d5dc72aeed66385e7960b492617ee",
+      "last_modified": "2025-06-22T23:43:48.701892",
+      "needs_remote_storage": true,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\02_intermediate\\versioned_data.pkl\\2025-06-23T03.56.48.196Z\\versioned_data.pkl": {
+      "filename": "versioned_data.pkl",
+      "size_mb": 24.75,
+      "hash": "4b4a83c876e3e68877731747a1c622623122892c202a687e9d11148417b96afa",
+      "last_modified": "2025-06-22T23:56:59.478432",
+      "needs_remote_storage": true,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\02_intermediate\\versioned_data.pkl\\2025-06-23T05.30.40.945Z\\versioned_data.pkl": {
+      "filename": "versioned_data.pkl",
+      "size_mb": 24.75,
+      "hash": "ba6586558f2b499cc3584b892f4457b502c2b4b7ad1b2dce67dee4bf08ef7a3a",
+      "last_modified": "2025-06-23T01:30:51.166669",
+      "needs_remote_storage": true,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\02_intermediate\\versioned_data.pkl\\2025-06-23T05.32.29.365Z\\versioned_data.pkl": {
+      "filename": "versioned_data.pkl",
+      "size_mb": 24.75,
+      "hash": "d638aff416e13b0b508b944e9c3e68d57ec964f8d709ff112c03f87cd58d6878",
+      "last_modified": "2025-06-23T01:32:40.799235",
+      "needs_remote_storage": true,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\02_intermediate\\versioned_data.pkl\\2025-06-23T05.42.13.661Z\\versioned_data.pkl": {
+      "filename": "versioned_data.pkl",
+      "size_mb": 24.75,
+      "hash": "50a8475114675aeb5fc439af453e378d295a81020dfb4955fc8fe271e592932f",
+      "last_modified": "2025-06-23T01:42:24.142858",
+      "needs_remote_storage": true,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\02_intermediate\\versioned_data.pkl\\2025-06-23T05.42.33.776Z\\versioned_data.pkl": {
+      "filename": "versioned_data.pkl",
+      "size_mb": 24.75,
+      "hash": "d8fa51f7b7c3e1834e7962754c2eba1d2a96b9e5496aa8ffb5110b96d33f397c",
+      "last_modified": "2025-06-23T01:42:43.815516",
+      "needs_remote_storage": true,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\02_intermediate\\versioned_data.pkl\\2025-06-23T05.44.35.252Z\\versioned_data.pkl": {
+      "filename": "versioned_data.pkl",
+      "size_mb": 24.75,
+      "hash": "82407aac782ceb27017f4a9a816cca1fefac6ef520d2a2bf691d757e4dc8c7e9",
+      "last_modified": "2025-06-23T01:44:45.916806",
+      "needs_remote_storage": true,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\02_intermediate\\versioned_data.pkl\\2025-06-23T05.55.53.391Z\\versioned_data.pkl": {
+      "filename": "versioned_data.pkl",
+      "size_mb": 24.75,
+      "hash": "bd864a2dcc111779bba29bb81c91c5e9d68f8261349867bfa53bf26b025f80e3",
+      "last_modified": "2025-06-23T01:56:05.414883",
+      "needs_remote_storage": true,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\02_intermediate\\versioned_data.pkl\\2025-06-25T04.48.21.847Z\\versioned_data.pkl": {
+      "filename": "versioned_data.pkl",
+      "size_mb": 24.75,
+      "hash": "f2363c31975df80a6c07beeba6b72ee053a6c6ac8504aa74131754875b0872ce",
+      "last_modified": "2025-06-25T00:49:02.318971",
+      "needs_remote_storage": true,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\02_intermediate\\versioned_data.pkl\\2025-06-25T06.36.59.367Z\\versioned_data.pkl": {
+      "filename": "versioned_data.pkl",
+      "size_mb": 24.75,
+      "hash": "aa22fb9aff09653fa08f84c284ad545e4bc960548bb4772eec8bb3a41df97014",
+      "last_modified": "2025-06-25T02:37:50.511042",
+      "needs_remote_storage": true,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\02_intermediate\\versioned_data.pkl\\2025-06-25T09.14.09.147Z\\versioned_data.pkl": {
+      "filename": "versioned_data.pkl",
+      "size_mb": 24.75,
+      "hash": "0434a9982e3d03d2ed4f557f3b4b2ecef86e61f4ff9074409a63223611cbb196",
+      "last_modified": "2025-06-25T05:14:54.234457",
+      "needs_remote_storage": true,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\09_model_registry\\registry_instance.pkl": {
+      "filename": "registry_instance.pkl",
+      "size_mb": 0.0,
+      "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "last_modified": "2025-06-24T17:20:30.644638",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\09_model_registry\\model_versions\\bayes_classification_v1.0.0_2e87656c-ab94-41f5-96bf-fcf2d3f1587e.pkl": {
+      "filename": "bayes_classification_v1.0.0_2e87656c-ab94-41f5-96bf-fcf2d3f1587e.pkl",
+      "size_mb": 0.0,
+      "hash": "91b4a49fdeb8d3e7f8608e5aceac4bc73174b166e9fe98d8c8cda5c255cab35d",
+      "last_modified": "2025-06-24T23:58:30.947620",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\09_model_registry\\model_versions\\bayes_classification_v1.0.0_521afc8d-d250-4257-bcd0-88075bb808ca.pkl": {
+      "filename": "bayes_classification_v1.0.0_521afc8d-d250-4257-bcd0-88075bb808ca.pkl",
+      "size_mb": 0.0,
+      "hash": "91b4a49fdeb8d3e7f8608e5aceac4bc73174b166e9fe98d8c8cda5c255cab35d",
+      "last_modified": "2025-06-24T18:49:26.938673",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\09_model_registry\\model_versions\\bayes_classification_v1.0.0_875f38ef-1ed7-4b32-a7ce-36cf673c3b89.pkl": {
+      "filename": "bayes_classification_v1.0.0_875f38ef-1ed7-4b32-a7ce-36cf673c3b89.pkl",
+      "size_mb": 0.0,
+      "hash": "91b4a49fdeb8d3e7f8608e5aceac4bc73174b166e9fe98d8c8cda5c255cab35d",
+      "last_modified": "2025-06-24T18:25:56.662169",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\09_model_registry\\model_versions\\bayes_classification_v1.0.0_e6ade9b8-faa9-4d07-841a-5a7ea84175da.pkl": {
+      "filename": "bayes_classification_v1.0.0_e6ade9b8-faa9-4d07-841a-5a7ea84175da.pkl",
+      "size_mb": 0.0,
+      "hash": "91b4a49fdeb8d3e7f8608e5aceac4bc73174b166e9fe98d8c8cda5c255cab35d",
+      "last_modified": "2025-06-24T18:58:15.941204",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\09_model_registry\\model_versions\\decision_tree_v1.0.0_3b2d5730-1104-4d71-97f7-6500a76337d9.pkl": {
+      "filename": "decision_tree_v1.0.0_3b2d5730-1104-4d71-97f7-6500a76337d9.pkl",
+      "size_mb": 0.0,
+      "hash": "33aa5216d6ade7d88c4c55ca6e41559f762bd88e6737b70bf30ead2dc700ab7f",
+      "last_modified": "2025-06-24T23:57:54.536335",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\09_model_registry\\model_versions\\decision_tree_v1.0.0_4a007743-fd72-48a7-bc3d-e49930fbe982.pkl": {
+      "filename": "decision_tree_v1.0.0_4a007743-fd72-48a7-bc3d-e49930fbe982.pkl",
+      "size_mb": 0.0,
+      "hash": "33aa5216d6ade7d88c4c55ca6e41559f762bd88e6737b70bf30ead2dc700ab7f",
+      "last_modified": "2025-06-24T18:57:38.815038",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\09_model_registry\\model_versions\\decision_tree_v1.0.0_7f0e4cce-fe15-4e46-b36f-99b812159f27.pkl": {
+      "filename": "decision_tree_v1.0.0_7f0e4cce-fe15-4e46-b36f-99b812159f27.pkl",
+      "size_mb": 0.0,
+      "hash": "33aa5216d6ade7d88c4c55ca6e41559f762bd88e6737b70bf30ead2dc700ab7f",
+      "last_modified": "2025-06-24T18:48:51.323219",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\09_model_registry\\model_versions\\decision_tree_v1.0.0_b2352258-ace5-4e03-bc24-cc802b043fe8.pkl": {
+      "filename": "decision_tree_v1.0.0_b2352258-ace5-4e03-bc24-cc802b043fe8.pkl",
+      "size_mb": 0.0,
+      "hash": "33aa5216d6ade7d88c4c55ca6e41559f762bd88e6737b70bf30ead2dc700ab7f",
+      "last_modified": "2025-06-24T18:25:20.965122",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\09_model_registry\\model_versions\\gaussian_nb_regressor_v1.0.0_0d485fc9-5c40-429e-bab9-fd4e7a872ec2.pkl": {
+      "filename": "gaussian_nb_regressor_v1.0.0_0d485fc9-5c40-429e-bab9-fd4e7a872ec2.pkl",
+      "size_mb": 0.01,
+      "hash": "2a991d422902749e9580df66584d9aaedcf9959b770bdb0c9c5b25de9c04f9d7",
+      "last_modified": "2025-06-24T18:48:17.412412",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\09_model_registry\\model_versions\\gaussian_nb_regressor_v1.0.0_94a4edfe-cb75-404f-aa97-672c4c508a93.pkl": {
+      "filename": "gaussian_nb_regressor_v1.0.0_94a4edfe-cb75-404f-aa97-672c4c508a93.pkl",
+      "size_mb": 0.01,
+      "hash": "2a991d422902749e9580df66584d9aaedcf9959b770bdb0c9c5b25de9c04f9d7",
+      "last_modified": "2025-06-24T18:24:46.528632",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\09_model_registry\\model_versions\\gaussian_nb_regressor_v1.0.0_f4707340-3f6d-4b5e-8cb9-edf137e24e92.pkl": {
+      "filename": "gaussian_nb_regressor_v1.0.0_f4707340-3f6d-4b5e-8cb9-edf137e24e92.pkl",
+      "size_mb": 0.01,
+      "hash": "2a991d422902749e9580df66584d9aaedcf9959b770bdb0c9c5b25de9c04f9d7",
+      "last_modified": "2025-06-24T18:57:04.232482",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\09_model_registry\\model_versions\\gradient_boosting_classification_v1.0.0_35ce69d7-cc16-4b01-b626-a5a6ca484575.pkl": {
+      "filename": "gradient_boosting_classification_v1.0.0_35ce69d7-cc16-4b01-b626-a5a6ca484575.pkl",
+      "size_mb": 0.06,
+      "hash": "b980725e86536fe1e4c4a93ba69ffccf6da1cb5a67c3c0c41d17bbb7dc00b9f7",
+      "last_modified": "2025-06-24T18:49:30.024576",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\09_model_registry\\model_versions\\gradient_boosting_classification_v1.0.0_8aba9915-ed58-4617-bbbc-f7c65a4ea831.pkl": {
+      "filename": "gradient_boosting_classification_v1.0.0_8aba9915-ed58-4617-bbbc-f7c65a4ea831.pkl",
+      "size_mb": 0.06,
+      "hash": "b980725e86536fe1e4c4a93ba69ffccf6da1cb5a67c3c0c41d17bbb7dc00b9f7",
+      "last_modified": "2025-06-24T18:25:59.771453",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\09_model_registry\\model_versions\\gradient_boosting_classification_v1.0.0_a2cbaa3d-bdee-4af8-bd4e-324e0a00d467.pkl": {
+      "filename": "gradient_boosting_classification_v1.0.0_a2cbaa3d-bdee-4af8-bd4e-324e0a00d467.pkl",
+      "size_mb": 0.06,
+      "hash": "b980725e86536fe1e4c4a93ba69ffccf6da1cb5a67c3c0c41d17bbb7dc00b9f7",
+      "last_modified": "2025-06-24T23:58:33.367182",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\09_model_registry\\model_versions\\gradient_boosting_classification_v1.0.0_f9304bd2-b6fa-46ad-b0cb-4f4acffe3906.pkl": {
+      "filename": "gradient_boosting_classification_v1.0.0_f9304bd2-b6fa-46ad-b0cb-4f4acffe3906.pkl",
+      "size_mb": 0.06,
+      "hash": "b980725e86536fe1e4c4a93ba69ffccf6da1cb5a67c3c0c41d17bbb7dc00b9f7",
+      "last_modified": "2025-06-24T18:58:18.992336",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\09_model_registry\\model_versions\\knn_classification_v1.0.0_3cba51f5-b0b4-4b6c-b81a-0725861678de.pkl": {
+      "filename": "knn_classification_v1.0.0_3cba51f5-b0b4-4b6c-b81a-0725861678de.pkl",
+      "size_mb": 25.24,
+      "hash": "85e86061f019b7405105b266ebc902d53443fada359470517fe7d214dc6188a1",
+      "last_modified": "2025-06-24T18:49:29.923264",
+      "needs_remote_storage": true,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\09_model_registry\\model_versions\\knn_classification_v1.0.0_3d62fe1a-06f8-4e42-bd5c-e735c8e42550.pkl": {
+      "filename": "knn_classification_v1.0.0_3d62fe1a-06f8-4e42-bd5c-e735c8e42550.pkl",
+      "size_mb": 25.24,
+      "hash": "16be40dfbd1f67044dbb8c18efa7163a85259039accf804f1194cf8c37c5a013",
+      "last_modified": "2025-06-24T18:58:18.894274",
+      "needs_remote_storage": true,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\09_model_registry\\model_versions\\knn_classification_v1.0.0_6ef2f8c9-d9b2-4ccc-be80-7cec5770c52a.pkl": {
+      "filename": "knn_classification_v1.0.0_6ef2f8c9-d9b2-4ccc-be80-7cec5770c52a.pkl",
+      "size_mb": 25.24,
+      "hash": "455ae0aad80666755c464f4044951c1c33509a8037bfafbabe6f4843b1001d85",
+      "last_modified": "2025-06-24T18:25:59.664182",
+      "needs_remote_storage": true,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\09_model_registry\\model_versions\\knn_classification_v1.0.0_80827928-07f8-480b-af54-fcc33693448d.pkl": {
+      "filename": "knn_classification_v1.0.0_80827928-07f8-480b-af54-fcc33693448d.pkl",
+      "size_mb": 25.24,
+      "hash": "784bc2c1eb38214a664d62b5fc106f44adf22f735f4ce2f2a4b2cb8dce84f3bb",
+      "last_modified": "2025-06-24T23:58:33.265257",
+      "needs_remote_storage": true,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\09_model_registry\\model_versions\\lasso_regressor_v1.0.0_186e412a-8adb-4608-93dc-2940b8c00df0.pkl": {
+      "filename": "lasso_regressor_v1.0.0_186e412a-8adb-4608-93dc-2940b8c00df0.pkl",
+      "size_mb": 0.0,
+      "hash": "ba2fa7a6c1fc5d75178b568edd6e833a6943b208434972cbae18ea503db89c30",
+      "last_modified": "2025-06-24T18:48:17.485532",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\09_model_registry\\model_versions\\lasso_regressor_v1.0.0_7170caac-6c2b-423e-b865-20c4fef91886.pkl": {
+      "filename": "lasso_regressor_v1.0.0_7170caac-6c2b-423e-b865-20c4fef91886.pkl",
+      "size_mb": 0.0,
+      "hash": "ba2fa7a6c1fc5d75178b568edd6e833a6943b208434972cbae18ea503db89c30",
+      "last_modified": "2025-06-24T18:24:46.612285",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\09_model_registry\\model_versions\\logistic_regression_v1.0.0_4551b9b4-feea-4d76-9cf0-74a7a2a4bc2c.pkl": {
+      "filename": "logistic_regression_v1.0.0_4551b9b4-feea-4d76-9cf0-74a7a2a4bc2c.pkl",
+      "size_mb": 0.0,
+      "hash": "435f3bad5d84d0611d1534bee6bda05c4dbc680905e98e8e316c765751c30694",
+      "last_modified": "2025-06-24T18:57:38.217244",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\09_model_registry\\model_versions\\logistic_regression_v1.0.0_5ef53ddd-0962-4422-a306-b5bf987173c6.pkl": {
+      "filename": "logistic_regression_v1.0.0_5ef53ddd-0962-4422-a306-b5bf987173c6.pkl",
+      "size_mb": 0.0,
+      "hash": "435f3bad5d84d0611d1534bee6bda05c4dbc680905e98e8e316c765751c30694",
+      "last_modified": "2025-06-24T23:57:53.768426",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\09_model_registry\\model_versions\\logistic_regression_v1.0.0_88c6d257-c66a-4257-b589-46c2dd87d920.pkl": {
+      "filename": "logistic_regression_v1.0.0_88c6d257-c66a-4257-b589-46c2dd87d920.pkl",
+      "size_mb": 0.0,
+      "hash": "435f3bad5d84d0611d1534bee6bda05c4dbc680905e98e8e316c765751c30694",
+      "last_modified": "2025-06-24T18:25:20.313461",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\09_model_registry\\model_versions\\logistic_regression_v1.0.0_8fcdebd9-5ef7-4f30-8b1d-f49d32df3153.pkl": {
+      "filename": "logistic_regression_v1.0.0_8fcdebd9-5ef7-4f30-8b1d-f49d32df3153.pkl",
+      "size_mb": 0.0,
+      "hash": "435f3bad5d84d0611d1534bee6bda05c4dbc680905e98e8e316c765751c30694",
+      "last_modified": "2025-06-24T18:48:50.688918",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\09_model_registry\\model_versions\\random_forest_classification_v1.0.0_2c191e58-9bfc-49a0-87e8-7d4dc527cd0e.pkl": {
+      "filename": "random_forest_classification_v1.0.0_2c191e58-9bfc-49a0-87e8-7d4dc527cd0e.pkl",
+      "size_mb": 11.0,
+      "hash": "37f96e26d0c514f2627f1687a66ac3f9573e58338beedd763f35885aac4fd2ab",
+      "last_modified": "2025-06-24T23:57:54.454098",
+      "needs_remote_storage": true,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\09_model_registry\\model_versions\\random_forest_classification_v1.0.0_7b702e8c-5b52-4f78-a5be-6a7ee468f652.pkl": {
+      "filename": "random_forest_classification_v1.0.0_7b702e8c-5b52-4f78-a5be-6a7ee468f652.pkl",
+      "size_mb": 11.0,
+      "hash": "37f96e26d0c514f2627f1687a66ac3f9573e58338beedd763f35885aac4fd2ab",
+      "last_modified": "2025-06-24T18:48:51.248249",
+      "needs_remote_storage": true,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\09_model_registry\\model_versions\\random_forest_classification_v1.0.0_ae0dd33e-4d73-4a5d-8be6-2cbc35808368.pkl": {
+      "filename": "random_forest_classification_v1.0.0_ae0dd33e-4d73-4a5d-8be6-2cbc35808368.pkl",
+      "size_mb": 11.0,
+      "hash": "37f96e26d0c514f2627f1687a66ac3f9573e58338beedd763f35885aac4fd2ab",
+      "last_modified": "2025-06-24T18:57:38.740367",
+      "needs_remote_storage": true,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\09_model_registry\\model_versions\\random_forest_classification_v1.0.0_c0497eb1-7bc9-4183-855c-c7322f7c539e.pkl": {
+      "filename": "random_forest_classification_v1.0.0_c0497eb1-7bc9-4183-855c-c7322f7c539e.pkl",
+      "size_mb": 11.0,
+      "hash": "37f96e26d0c514f2627f1687a66ac3f9573e58338beedd763f35885aac4fd2ab",
+      "last_modified": "2025-06-24T18:25:20.892628",
+      "needs_remote_storage": true,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\09_model_registry\\model_versions\\ridge_regressor_v1.0.0_221d837c-669d-4113-af78-e03c4eaa8bd0.pkl": {
+      "filename": "ridge_regressor_v1.0.0_221d837c-669d-4113-af78-e03c4eaa8bd0.pkl",
+      "size_mb": 0.0,
+      "hash": "b9c63b83500e98f161fbac1c5b2266c1f117d98977a5458a6a6b7f034e348288",
+      "last_modified": "2025-06-24T18:24:46.705031",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\09_model_registry\\model_versions\\ridge_regressor_v1.0.0_65291643-2698-44ba-8eb6-3e2c45a78181.pkl": {
+      "filename": "ridge_regressor_v1.0.0_65291643-2698-44ba-8eb6-3e2c45a78181.pkl",
+      "size_mb": 0.0,
+      "hash": "b9c63b83500e98f161fbac1c5b2266c1f117d98977a5458a6a6b7f034e348288",
+      "last_modified": "2025-06-24T18:48:17.575461",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\09_model_registry\\model_versions\\svm_classification_v1.0.0_dc36e281-77ad-4df1-a144-37dbb6545333.pkl": {
+      "filename": "svm_classification_v1.0.0_dc36e281-77ad-4df1-a144-37dbb6545333.pkl",
+      "size_mb": 1.3,
+      "hash": "fae323c21dff250d98d121b6ab1b34b7f769c55876292f71c7513bfc17b2a44b",
+      "last_modified": "2025-06-24T18:49:26.854686",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\09_model_registry\\model_versions\\svm_classification_v1.0.0_fac874a5-ee11-4278-83be-54d80424772c.pkl": {
+      "filename": "svm_classification_v1.0.0_fac874a5-ee11-4278-83be-54d80424772c.pkl",
+      "size_mb": 1.3,
+      "hash": "fae323c21dff250d98d121b6ab1b34b7f769c55876292f71c7513bfc17b2a44b",
+      "last_modified": "2025-06-24T18:25:56.578339",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\09_model_registry\\model_versions\\svr_v1.0.0_1d3bf1cf-e0c6-4493-8b27-fa7941cca4f5.pkl": {
+      "filename": "svr_v1.0.0_1d3bf1cf-e0c6-4493-8b27-fa7941cca4f5.pkl",
+      "size_mb": 3.47,
+      "hash": "e4486a1253328ca15e3f2a4652a023ef0e7976129591b47c0fe8802175ac4336",
+      "last_modified": "2025-06-24T18:25:20.239390",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": null
+    },
+    "data\\09_model_registry\\model_versions\\svr_v1.0.0_a650a7df-9862-4396-83ec-5b740bbb7210.pkl": {
+      "filename": "svr_v1.0.0_a650a7df-9862-4396-83ec-5b740bbb7210.pkl",
+      "size_mb": 3.47,
+      "hash": "e4486a1253328ca15e3f2a4652a023ef0e7976129591b47c0fe8802175ac4336",
+      "last_modified": "2025-06-24T18:48:50.612354",
+      "needs_remote_storage": false,
+      "is_critical": false,
+      "model_group": null
+    }
+  }
+}

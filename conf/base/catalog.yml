@@ -266,3 +266,632 @@ regression_models_ranking:
 regression_evaluation_summary:
   type: kedro_datasets.json.json_dataset.JSONDataset
   filepath: data/08_reporting/regression_evaluation_summary.json
+
+#------------------------------------------------------------------------------
+# ============================================
+# DATASETS PERSISTENTES PARA FEATURE SELECTION
+# ============================================
+
+# Dataset de clasificación
+classification_data:
+  type: kedro_datasets.pandas.sql_dataset.SQLTableDataset
+  table_name: classification_data
+  credentials:
+    con: postgresql://kedro:kedro@postgres:5432/kedro_db
+  save_args:
+    if_exists: 'replace'
+
+# Features seleccionadas - CAMBIAR A JSON persistente
+selected_features_classification:
+  type: kedro_datasets.json.JSONDataset
+  filepath: data/06_models/selected_features_classification.json
+
+# Resultados de correlación - CAMBIAR A JSON persistente  
+correlation_results_classification:
+  type: kedro_datasets.json.JSONDataset
+  filepath: data/05_model_input/correlation_results_classification.json
+
+# Resultados de información mutua - CAMBIAR A JSON persistente
+mutual_info_results:
+  type: kedro_datasets.json.JSONDataset
+  filepath: data/05_model_input/mutual_info_results.json
+
+# Resultados de chi-square - CAMBIAR A JSON persistente
+chi_square_results:
+  type: kedro_datasets.json.JSONDataset
+  filepath: data/05_model_input/chi_square_results.json
+
+# Resultados de feature importance - CAMBIAR A JSON persistente
+feature_importance_results:
+  type: kedro_datasets.json.JSONDataset
+  filepath: data/05_model_input/feature_importance_results.json
+
+# Resultados de RFE - CAMBIAR A JSON persistente
+rfe_results:
+  type: kedro_datasets.json.JSONDataset
+  filepath: data/05_model_input/rfe_results.json
+
+# Reporte de feature selection - CAMBIAR A JSON persistente
+feature_selection_report_classification:
+  type: kedro_datasets.json.JSONDataset
+  filepath: data/08_reporting/feature_selection_report_classification.json
+
+# ============================================
+# DATASETS PARA MODELOS
+# ============================================
+
+# Métricas del modelo Bayes
+bayes_metrics:
+  type: kedro_datasets.json.JSONDataset
+  filepath: data/07_model_output/bayes_metrics.json
+
+# Predicciones del modelo Bayes
+bayes_predictions:
+  type: kedro_datasets.pandas.sql_dataset.SQLTableDataset
+  table_name: bayes_predictions
+  credentials:
+    con: postgresql://kedro:kedro@postgres:5432/kedro_db
+  save_args:
+    if_exists: 'replace'
+
+#-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# ===== INPUT: CLASSIFICATION MODELS COLLECTION =====
+
+classification_models_dict:
+  type: kedro_datasets.pickle.PickleDataset
+  filepath: data/06_models/classification_models_dict.pkl
+
+# ===== EVALUATION OUTPUTS =====
+
+classification_comparison_report:
+  type: kedro_datasets.json.JSONDataset
+  filepath: data/08_reporting/classification_comparison_report.json
+  versioned: true
+
+classification_visualizations:
+  type: kedro_datasets.json.JSONDataset
+  filepath: data/08_reporting/classification_visualizations.json
+
+classification_evaluation_report:
+  type: kedro_datasets.json.JSONDataset
+  filepath: data/08_reporting/classification_evaluation_report.json
+  versioned: true
+
+# ===== INDIVIDUAL MODEL EVALUATIONS =====
+# These are optional - for evaluating specific models individually
+
+logistic_regression_evaluation:
+  type: kedro_datasets.json.JSONDataset
+  filepath: data/08_reporting/individual_evaluations/logistic_regression_evaluation.json
+
+random_forest_classification_evaluation:
+  type: kedro_datasets.json.JSONDataset
+  filepath: data/08_reporting/individual_evaluations/random_forest_classification_evaluation.json
+
+svm_classification_evaluation:
+  type: kedro_datasets.json.JSONDataset
+  filepath: data/08_reporting/individual_evaluations/svm_classification_evaluation.json
+
+decision_tree_evaluation:
+  type: kedro_datasets.json.JSONDataset
+  filepath: data/08_reporting/individual_evaluations/decision_tree_evaluation.json
+
+bayes_classification_evaluation:
+  type: kedro_datasets.json.JSONDataset
+  filepath: data/08_reporting/individual_evaluations/bayes_classification_evaluation.json
+
+knn_classification_evaluation:
+  type: kedro_datasets.json.JSONDataset
+  filepath: data/08_reporting/individual_evaluations/knn_classification_evaluation.json
+
+gradient_boosting_classification_evaluation:
+  type: kedro_datasets.json.JSONDataset
+  filepath: data/08_reporting/individual_evaluations/gradient_boosting_classification_evaluation.json
+
+# ===== MODEL ARTIFACTS FOR INDIVIDUAL EVALUATION =====
+# These should be outputs from your classification model pipelines
+
+logistic_regression_model:
+  type: kedro_datasets.pickle.PickleDataset
+  filepath: data/06_models/logistic_regression_model.pkl
+
+random_forest_classification_model:
+  type: kedro_datasets.pickle.PickleDataset
+  filepath: data/06_models/random_forest_classification_model.pkl
+
+svm_classification_model:
+  type: kedro_datasets.pickle.PickleDataset
+  filepath: data/06_models/svm_classification_model.pkl
+
+decision_tree_model:
+  type: kedro_datasets.pickle.PickleDataset
+  filepath: data/06_models/decision_tree_model.pkl
+
+bayes_classification_model:
+  type: kedro_datasets.pickle.PickleDataset
+  filepath: data/06_models/bayes_classification_model.pkl
+
+knn_model:  # ← Cambiar el nombre
+  type: kedro_datasets.pickle.PickleDataset
+  filepath: data/06_models/knn_model.pkl
+
+gradient_boosting_classification_model:
+  type: kedro_datasets.pickle.PickleDataset
+  filepath: data/06_models/gradient_boosting_model.pkl
+
+#------------------------------------------------------------------------------------------------------
+# ==========================================
+# UNIFIED DATA MANAGEMENT DATASETS
+# ==========================================
+# Add these entries to your existing conf/base/catalog.yml
+
+# ===== DATA VERSIONING =====
+
+versioned_data:
+  type: kedro_datasets.pickle.PickleDataset
+  filepath: data/02_intermediate/versioned_data.pkl
+  versioned: true
+
+# ===== UNIFIED SPLITS =====
+
+X_train_unified:
+  type: kedro_datasets.pandas.ParquetDataset
+  filepath: data/05_model_input/X_train_unified.parquet
+  save_args:
+    compression: snappy
+
+X_test_unified:
+  type: kedro_datasets.pandas.ParquetDataset  
+  filepath: data/05_model_input/X_test_unified.parquet
+  save_args:
+    compression: snappy
+
+y_classification_train_unified:
+  type: kedro_datasets.pandas.ParquetDataset
+  filepath: data/05_model_input/y_classification_train_unified.parquet
+  save_args:
+    compression: snappy
+
+y_classification_test_unified:
+  type: kedro_datasets.pandas.ParquetDataset
+  filepath: data/05_model_input/y_classification_test_unified.parquet  
+  save_args:
+    compression: snappy
+
+y_regression_train_unified:
+  type: kedro_datasets.pandas.ParquetDataset
+  filepath: data/05_model_input/y_regression_train_unified.parquet
+  save_args:
+    compression: snappy
+
+y_regression_test_unified:
+  type: kedro_datasets.pandas.ParquetDataset
+  filepath: data/05_model_input/y_regression_test_unified.parquet
+  save_args:
+    compression: snappy
+
+# ===== PROCESSED FEATURES =====
+
+X_train_processed:
+  type: kedro_datasets.pandas.ParquetDataset
+  filepath: data/05_model_input/X_train_processed.parquet
+  save_args:
+    compression: snappy
+
+X_test_processed:
+  type: kedro_datasets.pandas.ParquetDataset
+  filepath: data/05_model_input/X_test_processed.parquet
+  save_args:
+    compression: snappy
+
+# ===== FEATURE METADATA =====
+
+feature_metadata:
+  type: kedro_datasets.json.JSONDataset
+  filepath: data/05_model_input/feature_metadata.json
+
+# ===== DATA QUALITY =====
+
+data_quality_report:
+  type: kedro_datasets.json.JSONDataset
+  filepath: data/08_reporting/data_quality_report.json
+  versioned: true
+
+# ===== LEGACY COMPATIBILITY MAPPINGS =====
+# These allow your existing models to keep working without changes
+
+# Classification compatibility
+X_train_classification:
+  type: kedro_datasets.pandas.ParquetDataset
+  filepath: data/05_model_input/X_train_classification.parquet
+  save_args:
+    compression: snappy
+
+X_test_classification:
+  type: kedro_datasets.pandas.ParquetDataset
+  filepath: data/05_model_input/X_test_classification.parquet
+  save_args:
+    compression: snappy
+
+y_train_classification:
+  type: kedro_datasets.pandas.ParquetDataset
+  filepath: data/05_model_input/y_train_classification.parquet
+  save_args:
+    compression: snappy
+
+y_test_classification:
+  type: kedro_datasets.pandas.ParquetDataset
+  filepath: data/05_model_input/y_test_classification.parquet
+  save_args:
+    compression: snappy
+
+# Regression compatibility  
+X_train_regression:
+  type: kedro_datasets.pandas.ParquetDataset
+  filepath: data/05_model_input/X_train_regression.parquet
+  save_args:
+    compression: snappy
+
+X_test_regression:
+  type: kedro_datasets.pandas.ParquetDataset
+  filepath: data/05_model_input/X_test_regression.parquet
+  save_args:
+    compression: snappy
+
+y_train_regression:
+  type: kedro_datasets.pandas.ParquetDataset
+  filepath: data/05_model_input/y_train_regression.parquet
+  save_args:
+    compression: snappy
+
+y_test_regression:
+  type: kedro_datasets.pandas.ParquetDataset
+  filepath: data/05_model_input/y_test_regression.parquet
+  save_args:
+    compression: snappy
+
+# ===== MONITORING DATASETS =====
+
+data_drift_report:
+  type: kedro_datasets.json.JSONDataset
+  filepath: data/10_monitoring/data_drift_report.json
+  versioned: true
+
+performance_monitoring:
+  type: kedro_datasets.json.JSONDataset  
+  filepath: data/10_monitoring/performance_monitoring.json
+  versioned: true
+
+pipeline_execution_log:
+  type: kedro_datasets.json.JSONDataset
+  filepath: data/11_automation/pipeline_execution_log.json
+  versioned: true
+
+# ===== EXISTING DATASET (should already exist) =====
+# Make sure you have this in your catalog.yml:
+
+weather_data_postgres:
+  type: kedro_datasets.pandas.SQLTableDataset
+  credentials: db_credentials
+  table_name: clean_data
+  load_args:
+    index_col: null
+    
+# If you don't have postgres credentials defined, add this to conf/local/credentials.yml:
+# db_credentials:
+#   con: postgresql://kedro:kedro@localhost:5432/kedro_db
+
+classification_model:
+  type: pickle.PickleDataset
+  filepath: data/06_models/classification_model.pkl
+
+regression_model:
+  type: pickle.PickleDataset
+  filepath: data/06_models/regression_model.pkl
+
+#-----------------------------------------------------------------------------------------------------------------------------------------------
+# Model Training Pipeline Datasets
+
+# Trained Models and Artifacts
+classification_model_artifacts:
+  type: pickle.PickleDataset
+  filepath: data/06_models/classification_model_artifacts.pkl
+  versioned: true
+
+regression_model_artifacts:
+  type: pickle.PickleDataset
+  filepath: data/06_models/regression_model_artifacts.pkl
+  versioned: true
+
+model_training_artifacts:
+  type: pickle.PickleDataset
+  filepath: data/06_models/model_training_artifacts.pkl
+  versioned: true
+
+model_training_evaluation:
+  type: json.JSONDataset
+  filepath: data/08_reporting/model_training_evaluation.json
+  save_args:
+    indent: 2
+  versioned: true
+
+best_classification_model:
+  type: pickle.PickleDataset
+  filepath: data/06_models/best_classification_model.pkl
+  versioned: true
+
+best_regression_model:
+  type: pickle.PickleDataset
+  filepath: data/06_models/best_regression_model.pkl
+  versioned: true
+
+#---------------------------------------------------------------------------------------------------------------------------------------
+
+# Model Comparison Outputs
+regression_metrics_df:
+  type: pandas.ParquetDataset
+  filepath: data/07_model_output/regression_metrics_comparison.parquet
+
+regression_comparison_results:
+  type: json.JSONDataset
+  filepath: data/08_reporting/regression_comparison_results.json
+
+model_comparison_report:
+  type: json.JSONDataset
+  filepath: data/08_reporting/model_comparison_report.json
+  
+comparison_visualizations:
+  type: matplotlib.MatplotlibWriter
+  filepath: data/08_reporting/visualizations/model_comparison/
+  save_args:
+    format: png
+
+linear_regression_metrics:
+  type: kedro_datasets.json.json_dataset.JSONDataset
+  filepath: data/08_reporting/linear_regression_metrics.json
+
+random_forest_metrics:
+  type: kedro_datasets.json.json_dataset.JSONDataset
+  filepath: data/08_reporting/random_forest_metrics.json
+
+knn_regressor_metrics:
+  type: kedro_datasets.json.json_dataset.JSONDataset
+  filepath: data/08_reporting/knn_regressor_metrics.json
+
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# ===== MODEL EVALUATION PIPELINE DATASETS =====
+
+# Intermediate outputs
+regression_evaluation_df:
+  type: pandas.ParquetDataset
+  filepath: data/07_model_output/regression_evaluation_df.parquet
+
+classification_evaluation_summary:
+  type: json.JSONDataset
+  filepath: data/08_reporting/classification_evaluation_summary.json
+
+evaluation_visualization_paths:
+  type: json.JSONDataset
+  filepath: data/08_reporting/evaluation_visualization_paths.json
+
+# Final evaluation report
+final_evaluation_report:
+  type: json.JSONDataset
+  filepath: data/08_reporting/final_evaluation_report.json
+  versioned: true
+#------------------------------------------------
+# =======================================================
+# MODEL REGISTRY DATASETS
+# =======================================================
+
+# Model Registry Configuration Dataset
+model_registry_config:
+  type: kedro_datasets.yaml.YAMLDataset
+  filepath: conf/base/model_registry.yml
+
+# Model Registry Instance (singleton)
+model_registry_instance:
+  type: MemoryDataset
+  copy_mode: "assign"
+  #type: kedro_datasets.pickle.PickleDataset  
+  #filepath: data/09_model_registry/registry_instance.pkl
+  #versioned: false
+
+# =======================================================
+# MODEL METADATA DATASETS
+# =======================================================
+
+# Current model registry data (all models)
+model_registry_data:
+  type: kedro_datasets.pandas.SQLTableDataset  
+  table_name: model_summary
+  credentials:
+    con: postgresql://kedro:kedro@postgres:5432/kedro_db
+  load_args:
+    index_col: "id"
+
+# Model leaderboard data
+model_leaderboard_data:
+  #type: kedro_datasets.pandas.SQLQueryDataset
+  type: kedro_datasets.pandas.SQLTableDataset  
+  #sql: "SELECT * FROM model_leaderboard ORDER BY rank"
+  table_name: model_leaderboard_results
+  credentials:
+    con: postgresql://kedro:kedro@postgres:5432/kedro_db
+  load_args: {}
+  save_args:
+    index: false
+    if_exists: append
+
+# Model metrics data
+model_metrics_data:
+  type: kedro_datasets.pandas.SQLTableDataset  
+  table_name: model_metrics
+  credentials:
+    con: postgresql://kedro:kedro@postgres:5432/kedro_db
+
+# Model hyperparameters data
+model_hyperparameters_data:
+  type: kedro_datasets.pandas.SQLTableDataset  
+  table_name: model_hyperparameters
+  credentials:
+    con: postgresql://kedro:kedro@postgres:5432/kedro_db
+
+# =======================================================
+# MODEL COMPARISON DATASETS
+# =======================================================
+
+# Model comparison results
+model_comparison_results:
+  type: kedro_datasets.json.JSONDataset  
+  #filepath: data/09_model_registry/comparisons/comparison_results.json
+  filepath: data/08_reporting/regression_comparison_results.json
+  #versioned: true
+  save_args:
+    indent: 2
+# Recent comparisons view
+recent_model_comparisons:
+  type: kedro_datasets.pandas.SQLQueryDataset  
+  sql: "SELECT * FROM recent_model_comparisons LIMIT 20"
+  credentials:
+    con: postgresql://kedro:kedro@postgres:5432/kedro_db
+
+# =======================================================
+# MODEL LINEAGE DATASETS
+# =======================================================
+
+# Model lineage data
+model_lineage_data:
+  type: kedro_datasets.pandas.SQLTableDataset  
+  table_name: model_lineage
+  credentials:
+    con: postgresql://kedro:kedro@postgres:5432/kedro_db
+  load_args: {}
+  save_args:
+    index: false
+    if_exists: replace
+
+# Audit log data
+model_audit_log:
+  type: kedro_datasets.pandas.SQLQueryDataset  
+  sql: "SELECT * FROM model_audit_summary ORDER BY changed_at DESC LIMIT 100"
+  credentials:
+    con: postgresql://kedro:kedro@postgres:5432/kedro_db
+
+# =======================================================
+# MODEL REGISTRY REPORTS
+# =======================================================
+
+# Model registry summary report
+model_registry_summary_report:
+  #type: kedro_datasets.json.JSONDataset  
+  type: kedro_datasets.pickle.PickleDataset  
+  filepath: data/08_reporting/model_registry_summary.json
+  versioned: true
+  #save_args:
+  #  indent: 2
+  #  ensure_ascii: false
+
+# Model performance report
+model_performance_report:
+  type: kedro_datasets.json.JSONDataset  
+  filepath: data/08_reporting/model_performance_report.json
+  versioned: true
+
+# =======================================================
+# MODEL REGISTRY VISUALIZATIONS
+# =======================================================
+
+# Model registry visualizations
+model_registry_visualizations:
+  type: kedro_datasets.json.JSONDataset  
+  filepath: data/08_reporting/model_registry_visualizations.json
+  versioned: true
+
+# Performance trends data
+model_performance_trends:
+  type: kedro_datasets.pandas.CSVDataset  
+  filepath: data/08_reporting/model_performance_trends.csv
+  versioned: true
+
+# =======================================================
+# MODEL VERSIONS AND ARTIFACTS
+# =======================================================
+
+# Current best regression model - YA LO TIENES DEFINIDO ARRIBA, mantén el tuyo
+
+# Current best classification model - YA LO TIENES DEFINIDO ARRIBA, mantén el tuyo
+
+# Model metadata for best models
+best_models_metadata:
+  type: kedro_datasets.json.JSONDataset  
+  filepath: data/09_model_registry/best_models/metadata.json
+  versioned: false
+
+# =======================================================
+# INTEGRATION DATASETS
+# =======================================================
+
+# Automatically registered models from training pipelines
+auto_registered_models:
+  type: kedro_datasets.json.JSONDataset  
+  filepath: data/09_model_registry/auto_registered/models_list.json
+  versioned: true
+
+# Model registration queue (for batch processing)
+model_registration_queue:
+  type: kedro_datasets.json.JSONDataset  
+  filepath: data/09_model_registry/queue/registration_queue.json
+  versioned: false
+
+# =======================================================
+# DATASETS ADICIONALES QUE NECESITAS PARA LOS PIPELINES
+# =======================================================
+
+# Estos los necesitas agregar porque los pipelines los usan como outputs:
+
+model_metrics_validation:
+  type: kedro_datasets.json.JSONDataset
+  filepath: data/08_reporting/model_metrics_validation.json
+  versioned: true
+
+archived_models_log:
+  type: kedro_datasets.json.JSONDataset
+  filepath: data/08_reporting/archived_models_log.json
+  versioned: true
+
+# =======================================================
+# TEMPORARY DATASETS FOR MODEL REGISTRY OPERATIONS
+# =======================================================
+
+# Temporary dataset for model comparison operations
+temp_comparison_data:
+  type: kedro_datasets.pandas.ParquetDataset  
+  filepath: data/09_model_registry/temp/comparison_data.parquet
+  versioned: false
+
+# Temporary dataset for model evaluation
+temp_evaluation_data:
+  type: kedro_datasets.pandas.ParquetDataset  
+  filepath: data/09_model_registry/temp/evaluation_data.parquet
+  versioned: false
+
+# =======================================================
+# MODEL REGISTRY PARAMETERS
+# =======================================================
+
+# =======================================================
+# NOTES FOR INTEGRATION:
+# =======================================================
+# 1. Add these datasets to your existing catalog.yml
+# 2. Make sure the directory structure exists:
+#    - data/09_model_registry/
+#    - data/09_model_registry/model_versions/
+#    - data/09_model_registry/comparisons/
+#    - data/09_model_registry/best_models/
+#    - data/09_model_registry/auto_registered/
+#    - data/09_model_registry/queue/
+#    - data/09_model_registry/temp/
+# 3. The postgres_credentials should already exist in your credentials.yml
+# 4. These datasets integrate with your existing model datasets
+

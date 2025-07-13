@@ -1,0 +1,183 @@
+# ==========================================
+# Data Management Pipeline Configuration
+# ==========================================
+# Configuración unificada para el procesamiento de datos en MLOps
+
+data_management:
+  # Target variables
+  classification_target: "rain_tomorrow"
+  regression_target: "rainfall"
+  
+  # Data splitting strategy
+  split_method: "temporal"  # Options: "temporal", "random"
+  test_size: 0.2
+  random_state: 42
+  
+  # Data versioning
+  versioning:
+    enable_snapshots: true
+    snapshot_frequency: "daily"  # Options: "daily", "weekly", "on_demand"
+    max_snapshots: 30  # Keep last N snapshots
+    
+  # Missing value handling
+  missing_values:
+    numeric_strategy: "median"  # Options: "mean", "median", "mode", "drop"
+    categorical_strategy: "mode"  # Options: "mode", "unknown", "drop"
+    max_missing_ratio: 0.3  # Drop columns with >30% missing values
+
+# ==========================================
+# Feature Engineering Configuration
+# ==========================================
+
+feature_engineering:
+  # Scaling
+  apply_scaling: true
+  scaling_method: "standard"  # Options: "standard", "minmax", "robust", "none"
+  
+  # Feature selection
+  feature_selection_method: "correlation"  # Options: "correlation", "mutual_info", "chi2", "rfe", "none"
+  max_features: 20
+  correlation_threshold: 0.1
+  
+  # Feature creation
+  create_temporal_features: true
+  create_interaction_features: false
+  polynomial_features: false
+  polynomial_degree: 2
+  
+  # Categorical encoding
+  categorical_encoding: "label"  # Options: "label", "onehot", "target"
+  handle_unknown_categories: true
+
+# ==========================================
+# Data Quality Checks
+# ==========================================
+
+data_quality:
+  # Quality thresholds
+  min_samples: 1000
+  max_missing_ratio: 0.1
+  min_class_ratio: 0.05  # For classification
+  max_class_imbalance: 10.0  # 10:1 ratio max
+  
+  # Outlier detection
+  detect_outliers: true
+  outlier_method: "iqr"  # Options: "iqr", "zscore", "isolation_forest"
+  outlier_threshold: 3.0
+  
+  # Data drift detection (for production)
+  drift_detection:
+    enable: true
+    method: "ks_test"  # Options: "ks_test", "chi2", "psi"
+    threshold: 0.05
+    
+  # Alerts
+  alert_on_quality_issues: true
+  quality_score_threshold: 0.8
+
+# ==========================================
+# MLOps Automation Settings
+# ==========================================
+
+automation:
+  # Triggers for retraining
+  retrain_triggers:
+    data_drift: true
+    performance_degradation: true
+    scheduled: true
+    manual: true
+    
+  # Performance monitoring
+  performance_thresholds:
+    classification_f1_drop: 0.05  # 5% F1 score drop
+    regression_rmse_increase: 0.10  # 10% RMSE increase
+    accuracy_drop: 0.03  # 3% accuracy drop
+    
+  # Scheduling
+  schedule:
+    training: "0 2 * * 1"  # Monday at 2 AM
+    evaluation: "0 8 * * *"  # Daily at 8 AM  
+    data_quality_check: "0 */6 * * *"  # Every 6 hours
+    
+  # Resource limits
+  max_training_time: 3600  # 1 hour max
+  max_memory_usage: "8GB"
+  parallel_jobs: 4
+
+# ==========================================
+# Data Sources Configuration
+# ==========================================
+
+data_sources:
+  # Primary source
+  primary:
+    type: "postgresql"
+    table: "weather_data"
+    connection: "postgres://kedro:kedro@localhost:5432/kedro_db"
+    
+  # External APIs for fresh data
+  external_apis:
+    bom_weather:
+      url: "http://www.bom.gov.au/climate/data/"
+      format: "csv"
+      update_frequency: "daily"
+      enabled: true
+      
+    openweather:
+      url: "https://api.openweathermap.org/data/2.5/"
+      format: "json" 
+      update_frequency: "hourly"
+      enabled: false
+      api_key: 4e24e1c2d2ea22849c44004fa2f23139
+      
+  # Backup sources
+  backup_sources:
+    local_cache: "data/01_raw/weather_backup.csv"
+    s3_bucket: null  # Configure if using cloud storage
+
+# ==========================================
+# Monitoring & Logging
+# ==========================================
+
+monitoring:
+  # Metrics to track
+  track_metrics:
+    - "data_freshness"
+    - "data_quality_score" 
+    - "feature_drift"
+    - "target_drift"
+    - "model_performance"
+    
+  # Storage
+  metrics_storage:
+    type: "json"  # Options: "json", "database", "mlflow"
+    path: "data/10_monitoring/"
+    
+  # Alerting
+  alerts:
+    email_notifications: false
+    slack_webhook: null
+    log_level: "INFO"
+
+# ==========================================
+# Development vs Production Settings  
+# ==========================================
+
+environments:
+  development:
+    data_management:
+      test_size: 0.3  # Larger test set for dev
+      versioning:
+        max_snapshots: 5
+    automation:
+      schedule:
+        training: "*/5 * * * *"  # Every 5 minutes for testing
+        
+  production:
+    data_management:
+      test_size: 0.2
+      versioning:
+        max_snapshots: 30
+    automation:
+      schedule:
+        training: "0 2 * * 1"  # Weekly in production

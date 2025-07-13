@@ -1,0 +1,191 @@
+# =======================================================
+# MODEL REGISTRY CONFIGURATION
+# =======================================================
+
+model_registry:
+  # Base configuration
+  base_path: "data/09_model_registry"
+  auto_version: true
+  auto_archive_old_versions: false
+  max_versions_per_model: 10
+  
+  # Feature flags
+  enable_lineage_tracking: true
+  enable_data_hash_validation: true
+  enable_metric_validation: true
+  enable_hyperparameter_tracking: true
+  
+  # Database configuration (uses same as main project)
+  database:
+    use_credentials: "postgres_credentials"  # Referencias credentials.yml
+    
+  # Model storage configuration
+  storage:
+    model_format: "joblib"  # joblib, pickle, onnx
+    compression: true
+    backup_enabled: true
+    cleanup_old_versions: false
+    
+  # Versioning strategy
+  versioning:
+    strategy: "semantic"  # semantic, timestamp, hash
+    auto_increment: "patch"  # major, minor, patch
+    include_git_commit: true
+    include_kedro_version: true
+    
+  # Metrics configuration
+  metrics:
+    # Regression metrics to track
+    regression_metrics:
+      - "r2_score"
+      - "mean_squared_error"
+      - "mean_absolute_error"
+      - "root_mean_squared_error"
+      - "mean_absolute_percentage_error"
+    
+    # Classification metrics to track  
+    classification_metrics:
+      - "accuracy"
+      - "precision"
+      - "recall"
+      - "f1_score"
+      - "roc_auc"
+      - "log_loss"
+    
+    # Validation rules
+    validation_rules:
+      r2_score:
+        min_value: -10.0
+        max_value: 1.0
+      accuracy:
+        min_value: 0.0
+        max_value: 1.0
+      roc_auc:
+        min_value: 0.0
+        max_value: 1.0
+        
+  # Model comparison settings
+  comparison:
+    auto_compare_on_register: true
+    comparison_metrics:
+      regression: "r2_score"
+      classification: "accuracy"
+    leaderboard_size: 10
+    
+  # Lineage tracking
+  lineage:
+    track_input_datasets: true
+    track_pipeline_info: true
+    track_git_info: true
+    track_environment_info: true
+    
+  # Logging configuration
+  logging:
+    level: "INFO"
+    log_file: "logs/model_registry.log"
+    log_format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+    
+  # Integration settings
+  integration:
+    kedro:
+      auto_register_models: true
+      register_on_pipeline_completion: true
+      use_kedro_datasets: true
+    
+    mlflow:
+      enabled: false
+      tracking_uri: null
+      experiment_name: "weather_australia"
+    
+    weights_and_biases:
+      enabled: false
+      project: "weather-australia-mlops"
+      
+  # Alerts and notifications (for future implementation)
+  alerts:
+    enabled: false
+    channels:
+      - email
+      - slack
+    triggers:
+      - new_model_registered
+      - model_performance_degradation
+      - model_archived
+      
+# =======================================================
+# MODEL TAGS CONFIGURATION
+# =======================================================
+
+model_tags:
+  # Default tags for all models
+  default_tags:
+    project: "weather_australia"
+    environment: "development"
+    framework: "kedro"
+    
+  # Environment-specific tags
+  environments:
+    development:
+      deployment_ready: false
+      testing: true
+    staging:
+      deployment_ready: true
+      testing: true
+    production:
+      deployment_ready: true
+      testing: false
+      
+  # Algorithm-specific tags
+  algorithms:
+    logistic_regression:
+      category: "linear"
+      complexity: "low"
+      interpretability: "high"
+    random_forest:
+      category: "ensemble"
+      complexity: "medium"
+      interpretability: "medium"
+    svm:
+      category: "kernel"
+      complexity: "high"
+      interpretability: "low"
+    gradient_boosting:
+      category: "boosting"
+      complexity: "high"
+      interpretability: "medium"
+      
+# =======================================================
+# PIPELINE INTEGRATION SETTINGS  
+# =======================================================
+
+pipeline_integration:
+  # Automatic registration settings
+  auto_register:
+    enabled: true
+    pipelines:
+      - "model_training_classification"
+      - "model_training_regression"
+      - "model_evaluation_classification"
+      - "model_evaluation_regression"
+      
+  # Model naming conventions
+  naming_conventions:
+    include_algorithm: true
+    include_timestamp: false
+    include_performance: false
+    separator: "_"
+    
+  # Registration triggers
+  triggers:
+    on_model_creation: true
+    on_model_evaluation: true
+    on_pipeline_completion: true
+    
+  # Data to capture automatically
+  auto_capture:
+    training_data_hash: true
+    test_data_hash: true
+    hyperparameters: true
+    metrics: true
+    pipeline_metadata: true
+    git_commit: true
