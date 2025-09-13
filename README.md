@@ -65,9 +65,24 @@ data/
 - Docker y Docker Compose
 - PostgreSQL (containerizado)
 
+### Configuración del Ambiente Virtual
+
+Antes de instalar las dependencias, es necesario crear un ambiente virtual de Python:
+
+```bash
+# Crear ambiente virtual
+python -m venv venv
+
+# Activar ambiente virtual
+# En Windows:
+venv\Scripts\activate
+# En Linux/MacOS:
+source venv/bin/activate
+```
+
 ### Instalación de Dependencias
 
-Instala las dependencias del proyecto:
+Una vez activado el ambiente virtual, instala las dependencias del proyecto:
 
 ```bash
 pip install -r requirements.txt
