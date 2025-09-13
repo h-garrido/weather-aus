@@ -1,101 +1,221 @@
-# weathe_aus_without_notebook
+# Predicción Meteorológica Australia - Proyecto Machine Learning
 
 [![Powered by Kedro](https://img.shields.io/badge/powered_by-kedro-ffc900?logo=kedro)](https://kedro.org)
 
-## Overview
+## Descripción General
 
-This is your new Kedro project, which was generated using `kedro 0.19.12`.
+Este proyecto de **machine learning** utiliza **Kedro 0.19.12** para desarrollar modelos predictivos sobre datos meteorológicos de Australia. El sistema implementa múltiples algoritmos de regresión y clasificación para predicción del clima, con un enfoque en ingeniería de datos robusta y evaluación comparativa de modelos.
 
-Take a look at the [Kedro documentation](https://docs.kedro.org) to get started.
+### Características Principales
 
-## Rules and guidelines
+- **13 pipelines especializados** para procesamiento de datos y modelado
+- **8 modelos de regresión** (Linear, Ridge, Lasso, SVR, Random Forest, Gradient Boosting, KNN, Gaussian NB)
+- **7 modelos de clasificación** (Naive Bayes, Random Forest, SVM, Decision Tree, Logistic Regression, KNN, Gradient Boosting)
+- **Sistema de Model Registry** avanzado con versionado y comparación
+- **Integración con PostgreSQL** y containerización Docker
+- **Evaluación automática** con métricas y visualizaciones
 
-In order to get the best out of the template:
+## Arquitectura del Proyecto
 
-* Don't remove any lines from the `.gitignore` file we provide
-* Make sure your results can be reproduced by following a data engineering convention
-* Don't commit data to your repository
-* Don't commit any credentials or your local configuration to your repository. Keep all your credentials and local configuration in `conf/local/`
+### Pipelines Implementados
 
-## How to install dependencies
+1. **Gestión de Datos**:
+   - `data_management` - Gestión unificada de datos
+   - `data_to_postgres` - Carga a base de datos
+   - `data_transform` - Transformaciones de datos
 
-Declare any dependencies in `requirements.txt` for `pip` installation.
+2. **Selección de Características**:
+   - `feature_selection_classification` - Selección para clasificación
+   - `feature_selection_regression` - Selección para regresión
 
-To install them, run:
+3. **Modelos de Regresión**:
+   - `regression_models` - Implementación de modelos
+   - `regression_evaluation` - Evaluación específica
+
+4. **Modelos de Clasificación**:
+   - `classification_models` - Implementación de modelos
+   - `classification_evaluation` - Evaluación específica
+
+5. **Evaluación y Comparación**:
+   - `model_evaluation` - Evaluación general
+   - `model_comparison` - Comparación entre modelos
+   - `model_training` - Entrenamiento automatizado
+
+6. **Registry de Modelos**:
+   - `model_registry` - Gestión avanzada y versionado
+
+### Estructura de Datos
 
 ```
+data/
+├── 01_raw/           # Datos originales (weatherAUS.csv)
+├── 02_intermediate/  # Datos procesados intermedios
+├── 03_primary/       # Datos principales limpios
+├── 04_feature/       # Características engineered
+├── 05_model_input/   # Datos listos para modelado
+├── 06_models/        # Modelos entrenados (.pkl)
+├── 07_model_output/  # Predicciones de modelos
+└── 08_reporting/     # Métricas y visualizaciones
+```
+
+## Configuración e Instalación
+
+### Requisitos Previos
+- Python >= 3.9
+- Docker y Docker Compose
+- PostgreSQL (containerizado)
+
+### Instalación de Dependencias
+
+Instala las dependencias del proyecto:
+
+```bash
 pip install -r requirements.txt
 ```
 
-## How to run your Kedro pipeline
+### Configuración con Docker
 
-You can run your Kedro project with:
-
+1. **Levantar los servicios**:
+```bash
+docker-compose up -d
 ```
+
+2. **Verificar instalación** (si hay errores):
+```bash
+docker exec -it kedro_app bash -c "pip install 'kedro-datasets[pandas,sql]' --upgrade"
+```
+
+3. **Instalar dependencias adicionales**:
+```bash
+docker exec -it kedro_app bash -c "pip install scikit-learn matplotlib seaborn joblib pyarrow fastparquet"
+```
+
+## Ejecución del Proyecto
+
+### Ejecutar Pipeline Completo
+
+```bash
 kedro run
 ```
 
-## How to test your Kedro project
+### Ejecutar Pipelines Específicos
 
-Have a look at the file `src/tests/test_run.py` for instructions on how to write your tests. You can run your tests as follows:
+```bash
+# Solo modelos de regresión
+kedro run --pipeline regression_models
 
-```
-pytest
-```
+# Solo evaluación de clasificación
+kedro run --pipeline classification_evaluation
 
-You can configure the coverage threshold in your project's `pyproject.toml` file under the `[tool.coverage.report]` section.
-
-
-## Project dependencies
-
-To see and update the dependency requirements for your project use `requirements.txt`. You can install the project requirements with `pip install -r requirements.txt`.
-
-[Further information about project dependencies](https://docs.kedro.org/en/stable/kedro_project_setup/dependencies.html#project-specific-dependencies)
-
-## How to work with Kedro and notebooks
-
-> Note: Using `kedro jupyter` or `kedro ipython` to run your notebook provides these variables in scope: `context`, 'session', `catalog`, and `pipelines`.
->
-> Jupyter, JupyterLab, and IPython are already included in the project requirements by default, so once you have run `pip install -r requirements.txt` you will not need to take any extra steps before you use them.
-
-### Jupyter
-To use Jupyter notebooks in your Kedro project, you need to install Jupyter:
-
-```
-pip install jupyter
+# Comparación de modelos
+kedro run --pipeline model_comparison
 ```
 
-After installing Jupyter, you can start a local notebook server:
+### Visualización con Kedro-Viz
 
+```bash
+kedro viz
 ```
+
+## Trabajo con Notebooks
+
+> **Nota**: Al usar `kedro jupyter` o `kedro ipython` tienes acceso a las variables: `context`, `session`, `catalog`, y `pipelines`.
+
+### Jupyter Notebook
+```bash
 kedro jupyter notebook
 ```
 
 ### JupyterLab
-To use JupyterLab, you need to install it:
-
-```
-pip install jupyterlab
-```
-
-You can also start JupyterLab:
-
-```
+```bash
 kedro jupyter lab
 ```
 
 ### IPython
-And if you want to run an IPython session:
-
-```
+```bash
 kedro ipython
 ```
 
-### How to ignore notebook output cells in `git`
-To automatically strip out all output cell contents before committing to `git`, you can use tools like [`nbstripout`](https://github.com/kynan/nbstripout). For example, you can add a hook in `.git/config` with `nbstripout --install`. This will run `nbstripout` before anything is committed to `git`.
+### Ignorar Outputs de Notebooks en Git
 
-> *Note:* Your output cells will be retained locally.
+Para eliminar automáticamente las salidas de las celdas antes de hacer commit:
 
-## Package your Kedro project
+```bash
+nbstripout --install
+```
 
-[Further information about building project documentation and packaging your project](https://docs.kedro.org/en/stable/tutorial/package_a_project.html)
+> **Nota**: Las salidas se mantienen localmente, solo se excluyen del repositorio.
+
+## Testing
+
+Ejecuta las pruebas del proyecto:
+
+```bash
+pytest
+```
+
+Configura el umbral de cobertura en `pyproject.toml` bajo la sección `[tool.coverage.report]`.
+
+## Gestión de Dependencias
+
+- **Ver dependencias**: Revisa `requirements.txt`
+- **Actualizar**: Modifica `requirements.txt` y ejecuta `pip install -r requirements.txt`
+- **Información adicional**: [Documentación Kedro - Dependencias](https://docs.kedro.org/en/stable/kedro_project_setup/dependencies.html#project-specific-dependencies)
+
+## Monitoreo de Datos
+
+### Revisar Resultados
+
+```bash
+# Listar reportes generados
+docker exec -it kedro_app bash -c "ls -la /app/data/08_reporting/"
+
+# Ver métricas específicas
+docker exec -it kedro_app bash -c "cat /app/data/08_reporting/linear_regression_metrics_summary.json"
+```
+
+## Modelos Disponibles
+
+### Regresión (Target: `risk_mm`)
+- **Linear Regression** - Regresión lineal básica
+- **Ridge Regression** - Regresión con regularización L2
+- **Lasso Regression** - Regresión con regularización L1
+- **Support Vector Regression (SVR)** - Máquinas de soporte vectorial
+- **Random Forest** - Ensamble de árboles
+- **Gradient Boosting** - Boosting con gradiente
+- **K-Nearest Neighbors** - Vecinos más cercanos
+- **Gaussian Naive Bayes** - Bayes ingenuo gaussiano
+
+### Clasificación
+- **Naive Bayes** - Clasificador bayesiano
+- **Random Forest** - Ensamble de árboles para clasificación
+- **Support Vector Machine (SVM)** - Máquinas de soporte vectorial
+- **Decision Tree** - Árbol de decisión
+- **Logistic Regression** - Regresión logística
+- **K-Nearest Neighbors** - Vecinos más cercanos
+- **Gradient Boosting** - Boosting con gradiente
+
+## Empaquetado del Proyecto
+
+Para más información sobre construcción de documentación y empaquetado: [Documentación Kedro - Empaquetado](https://docs.kedro.org/en/stable/tutorial/package_a_project.html)
+
+## Reglas y Mejores Prácticas
+
+Para obtener el mejor rendimiento del proyecto:
+
+* **No elimines** líneas del archivo `.gitignore` proporcionado
+* **Asegura la reproducibilidad** siguiendo convenciones de ingeniería de datos
+* **No hagas commit de datos** al repositorio
+* **No hagas commit de credenciales** o configuración local. Mantén toda la configuración sensible en `conf/local/`
+* **Utiliza el Model Registry** para gestionar versiones de modelos
+* **Ejecuta evaluaciones** comparativas antes de deployar modelos
+
+## Estructura del Código
+
+El proyecto sigue la estructura estándar de Kedro con **92 archivos Python** organizados en:
+
+- `src/weathe_aus_without_notebook/pipelines/` - Implementación de pipelines
+- `src/weathe_aus_without_notebook/model_registry/` - Sistema de registry de modelos
+- `conf/` - Configuraciones del proyecto
+- `tests/` - Pruebas unitarias
+- `notebooks/` - Notebooks de exploración
